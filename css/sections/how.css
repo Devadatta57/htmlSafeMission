@@ -1,0 +1,560 @@
+/* ========================================================
+   how.css - "How S.A.F.E. Mission Works"
+   Serpentine journey board: rows of 2 - 3 - 3 - 2 cards,
+   joined by arrows that js/components/how-journey.js draws.
+
+   Desktop (>= 1024px): board sizes are written in board
+   units (--u). The board is 1500 units wide and --u is
+   1/1500 of its rendered width, so it scales as one piece.
+   Tablet & phone: one column, --u becomes a fixed px size.
+   ======================================================== */
+
+.how-section {
+  width: 100%;
+  position: relative;
+  padding: 64px 20px 80px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 40% at 50% 0%, rgba(255, 255, 255, 0.55) 0%, transparent 70%),
+    linear-gradient(180deg, #e2eef9 0%, #d9e8f5 55%, #dbe9f6 100%);
+  font-family: var(--font-sans);
+}
+
+.how-container {
+  max-width: 1540px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+/* ========================================================
+   SECTION HEADER
+   ======================================================== */
+.how-title-column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.how-main-heading {
+  margin: 0 0 12px;
+  font-family: var(--font-condensed);
+  font-size: clamp(32px, 4.6vw, 70px);
+  font-weight: 800;
+  color: #0c2a4d;
+  letter-spacing: -0.015em;
+  line-height: 1.06;
+}
+
+.how-heading-safe {
+  background: linear-gradient(90deg, #1463d6 0%, #1f7ae8 55%, #2b8cf2 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.how-subtitle-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.how-sub-line {
+  height: 3px;
+  width: clamp(40px, 7vw, 100px);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.how-line-left {
+  background: linear-gradient(90deg, #14b8a6 0%, #1d6fe0 100%);
+}
+
+.how-line-right {
+  background: linear-gradient(90deg, #1d6fe0 0%, #3b8cf5 100%);
+}
+
+.how-subtitle {
+  font-size: clamp(16px, 1.75vw, 26px);
+  font-weight: 500;
+  color: #17345a;
+  margin: 0;
+  line-height: 1.35;
+  word-spacing: 0.08em;
+}
+
+/* ========================================================
+   BOARD
+   ======================================================== */
+.how-board {
+  position: relative;
+  width: 100%;
+  max-width: 1200px; /* the whole board (cards and badges) scales down with this */
+  margin: 0 auto;
+  container-type: inline-size;
+  --u: calc(100cqw / 1500);
+}
+
+/* A row of cards, centred, with room for an arrow in each gap.
+   Rows stay unpositioned so each step's offsetTop/offsetLeft is measured from the board. */
+.how-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: calc(110 * var(--u));
+}
+
+.how-row:first-of-type {
+  margin-top: calc(34 * var(--u));
+}
+
+.how-row + .how-row {
+  margin-top: calc(150 * var(--u));
+}
+
+.how-row:last-of-type {
+  margin-bottom: calc(34 * var(--u));
+}
+
+/* Arrows between the steps (drawn by JS, in px) */
+.how-arrows {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.how-arrows path {
+  fill: none;
+  stroke: #7fa2d8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.how-arrows .how-arrow-head {
+  stroke: #1d5fd1;
+}
+
+.how-arrows circle {
+  fill: #7fa2d8;
+}
+
+/* One step. Colours: --accent (badge, bullets), --border, --title */
+.how-step {
+  position: relative;
+  flex: 0 0 calc(400 * var(--u));
+  min-width: 0;
+  z-index: 2;
+}
+
+.how-step[data-step='01'],
+.how-step[data-step='04'] { --accent: #16a34a; --border: #22c55e; --title: #15803d; }
+.how-step[data-step='02'] { --accent: #2563eb; --border: #3b82f6; --title: #1565d8; }
+.how-step[data-step='03'] { --accent: #f97316; --border: #fb923c; --title: #e8590c; }
+.how-step[data-step='05'] { --accent: #e11d48; --border: #fb7185; --title: #d1213f; }
+.how-step[data-step='06'] { --accent: #7c3aed; --border: #a78bfa; --title: #4f3fd1; }
+.how-step[data-step='07'] { --accent: #f59e0b; --border: #fbbf24; --title: #dd5a0e; }
+.how-step[data-step='08'] { --accent: #f43f5e; --border: #fb7185; --title: #dc1f3c; }
+.how-step[data-step='09'] { --accent: #2563eb; --border: #60a5fa; --title: #1d40a8; }
+.how-step[data-step='10'] { --accent: #7c3aed; --border: #a78bfa; --title: #6d28d9; }
+
+/*
+  Card - all cards share the same size while collapsed (--collapsed-min is measured
+  in JS: photo + heading + one line of text + Read more). An open card grows downward.
+*/
+.how-card {
+  position: relative;
+  width: 100%;
+  min-height: var(--collapsed-min, 0px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: calc(11 * var(--u));
+  background: linear-gradient(
+    140deg,
+    #ffffff 0%,
+    #ffffff 50%,
+    color-mix(in srgb, var(--accent) 7%, #ffffff) 100%
+  );
+  border: calc(2.5 * var(--u)) solid var(--border);
+  border-radius: calc(14 * var(--u));
+  box-shadow:
+    0 0 calc(14 * var(--u)) color-mix(in srgb, var(--accent) 28%, transparent),
+    0 calc(8 * var(--u)) calc(24 * var(--u)) rgba(15, 40, 80, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Heading row inside the card: step number, then the heading */
+.how-card-head {
+  display: flex;
+  align-items: center;
+  gap: calc(11 * var(--u));
+  margin-bottom: calc(7 * var(--u));
+}
+
+/* Circular step number */
+.how-badge {
+  flex-shrink: 0;
+  width: max(30px, calc(50 * var(--u)));
+  height: max(30px, calc(50 * var(--u)));
+  border-radius: 50%;
+  border: calc(3.5 * var(--u)) solid #ffffff;
+  background: radial-gradient(
+    circle at 32% 28%,
+    color-mix(in srgb, var(--accent) 55%, #ffffff) 0%,
+    var(--accent) 55%,
+    color-mix(in srgb, var(--accent) 82%, #000000) 100%
+  );
+  box-shadow:
+    0 0 0 calc(2.5 * var(--u)) color-mix(in srgb, var(--accent) 55%, transparent),
+    0 calc(4 * var(--u)) calc(12 * var(--u)) color-mix(in srgb, var(--accent) 40%, transparent);
+  color: #ffffff;
+  font-family: var(--font-condensed);
+  font-weight: 800;
+  font-size: max(13px, calc(21 * var(--u)));
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s ease;
+}
+
+@media (hover: hover) {
+  .how-step:hover .how-card {
+    transform: translateY(calc(-5 * var(--u)));
+    box-shadow:
+      0 0 calc(20 * var(--u)) color-mix(in srgb, var(--accent) 40%, transparent),
+      0 calc(14 * var(--u)) calc(30 * var(--u)) rgba(15, 40, 80, 0.14);
+  }
+
+  .how-step:hover .how-badge {
+    transform: scale(1.08);
+  }
+}
+
+/* One-time intro: each card lifts in turn, like a hover */
+.how-step.is-pulse .how-card {
+  transform: translateY(calc(-6 * var(--u))) scale(1.03);
+  box-shadow:
+    0 0 calc(22 * var(--u)) color-mix(in srgb, var(--accent) 45%, transparent),
+    0 calc(16 * var(--u)) calc(32 * var(--u)) rgba(15, 40, 80, 0.16);
+}
+
+.how-step.is-pulse .how-badge {
+  transform: scale(1.14);
+}
+
+/* Photo on top, shown whole at its own proportions (760 x 430) */
+.how-card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 760 / 430;
+  object-fit: cover;
+  border-radius: calc(9 * var(--u));
+  flex-shrink: 0;
+  background: #e2e8f0;
+  box-shadow: 0 calc(2 * var(--u)) calc(6 * var(--u)) rgba(0, 0, 0, 0.12);
+}
+
+/* Heading and text below the photo */
+.how-card-info {
+  flex: none;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: calc(13 * var(--u));
+  padding: 0 calc(8 * var(--u));
+}
+
+.how-card-title {
+  font-family: var(--font-condensed);
+  font-size: max(15px, calc(23 * var(--u)));
+  font-weight: 700;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--title);
+  margin: 0;
+  min-width: 0;
+  text-wrap: balance;
+}
+
+.how-card-desc {
+  font-family: var(--font-condensed);
+  font-size: max(13px, calc(15.5 * var(--u)));
+  font-weight: 400;
+  line-height: 1.36;
+  color: #4b5563;
+  margin: 0;
+}
+
+/* Collapsed: only the first line of text, ending in ... */
+.how-card:not([data-open]) .how-card-desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+/* Remaining text (bullets / chain): slides open inside the card */
+.how-card-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+
+.how-card-more-inner {
+  min-height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  transition: visibility 0s linear 0.35s;
+}
+
+.how-card[data-open] .how-card-more {
+  grid-template-rows: 1fr;
+}
+
+.how-card[data-open] .how-card-more-inner {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+/* Read more / Read less, kept at the bottom of the card */
+.how-card-toggle {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(5 * var(--u));
+  min-height: 32px;
+  padding: calc(8 * var(--u)) calc(8 * var(--u)) calc(2 * var(--u));
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-condensed);
+  font-size: max(12.5px, calc(15 * var(--u)));
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--title);
+}
+
+.how-card-toggle:hover .how-toggle-label,
+.how-card-toggle:focus-visible .how-toggle-label {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.how-card-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.how-toggle-icon {
+  width: 1em;
+  height: 1em;
+  transition: transform 0.3s ease;
+}
+
+.how-card[data-open] .how-toggle-icon {
+  transform: rotate(180deg);
+}
+
+/* Bullet points with an accent-coloured dot */
+.how-card-points {
+  list-style: none;
+  margin: calc(6 * var(--u)) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2.5 * var(--u));
+}
+
+.how-card-points li {
+  position: relative;
+  padding-left: max(11px, calc(13 * var(--u)));
+  font-family: var(--font-condensed);
+  font-size: max(12.5px, calc(15 * var(--u)));
+  font-weight: 500;
+  line-height: 1.3;
+  color: #334155;
+}
+
+.how-card-points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: max(5px, calc(6 * var(--u)));
+  height: max(5px, calc(6 * var(--u)));
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 calc(2 * var(--u)) color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+/* Step 7 infrastructure chain: Packhouse -> CFC -> ... */
+.how-card-chain {
+  margin: calc(7 * var(--u)) 0 0;
+  font-family: var(--font-condensed);
+  font-size: max(12.5px, calc(15 * var(--u)));
+  font-weight: 500;
+  line-height: 1.5;
+  color: #334155;
+}
+
+.how-chain-arrow {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.how-chain-item {
+  white-space: nowrap;
+}
+
+/* ========================================================
+   TABLET & PHONE (< 1024px): one column with arrows between
+   ======================================================== */
+@media (max-width: 1023.98px) {
+  .how-title-column {
+    margin-bottom: 32px;
+  }
+
+  .how-board {
+    --u: 0.82px;
+    max-width: 480px;
+  }
+
+  .how-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 60px;
+  }
+
+  .how-row:first-of-type,
+  .how-row:last-of-type {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .how-row + .how-row {
+    margin-top: 60px;
+  }
+
+  .how-step {
+    flex: none;
+    width: 100%;
+  }
+
+  .how-card {
+    padding: 10px;
+  }
+
+  .how-card-info {
+    margin-top: 12px;
+    padding: 0 6px;
+  }
+
+  .how-card-toggle {
+    padding: 8px 6px 4px;
+    font-size: 14px;
+  }
+
+  .how-card-title {
+    font-size: 18px;
+  }
+
+  .how-card-desc {
+    font-size: 14px;
+  }
+
+  .how-card-points li,
+  .how-card-chain {
+    font-size: 13.5px;
+  }
+
+  .how-step.is-pulse .how-card {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+      0 0 18px color-mix(in srgb, var(--accent) 45%, transparent),
+      0 12px 26px rgba(15, 40, 80, 0.14);
+  }
+
+  .how-step.is-pulse .how-badge {
+    transform: scale(1.12);
+  }
+}
+
+@media (max-width: 560px) {
+  .how-section {
+    padding: 48px 14px 60px;
+  }
+
+  .how-board {
+    --u: 0.7px;
+  }
+
+  .how-row,
+  .how-row + .how-row {
+    gap: 52px;
+  }
+
+  .how-row + .how-row {
+    margin-top: 52px;
+  }
+
+  .how-card-title {
+    font-size: 17px;
+  }
+
+  .how-card-desc {
+    font-size: 13.5px;
+  }
+
+  .how-card-points li,
+  .how-card-chain {
+    font-size: 13px;
+  }
+
+  .how-subtitle-wrap {
+    gap: 10px;
+  }
+
+  .how-subtitle {
+    font-size: 15px;
+  }
+
+  .how-sub-line {
+    width: 24px;
+  }
+}
+
+@media (max-width: 380px) {
+  .how-board {
+    --u: 0.62px;
+  }
+
+  .how-card-title {
+    font-size: 16px;
+  }
+
+  .how-card-desc {
+    font-size: 13px;
+  }
+
+  .how-card-points li,
+  .how-card-chain {
+    font-size: 12.5px;
+  }
+}

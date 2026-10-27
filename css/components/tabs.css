@@ -1,0 +1,292 @@
+/* ========================================================
+   tabs.css - Frosted glass section tabs over the hero video
+
+   Every tab keeps the same box in both states, so switching
+   the active tab never shifts the others. Phones (<= 600px)
+   get four equal columns with the icon above the label.
+   ======================================================== */
+
+.hero-tabs {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Outer frosted glass capsule */
+.tabs-capsule {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 32px;
+  padding: 6px;
+  list-style: none;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 9999px;
+  box-shadow:
+    0 20px 40px -12px rgba(0, 0, 0, 0.75),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.25);
+  max-width: 100%;
+  user-select: none;
+}
+
+.tabs-capsule > li {
+  display: flex;
+  min-width: 0;
+}
+
+/* Tab button (an in-page link) */
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 26px 0 5px;
+  border-radius: 9999px;
+  background: transparent;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+  transition:
+    background-color 0.25s var(--ease-out-expo),
+    color 0.25s var(--ease-out-expo),
+    box-shadow 0.25s var(--ease-out-expo),
+    transform 0.25s var(--ease-out-expo);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85);
+}
+
+/* Icon holder: glowing icon when active, tinted circle badge when inactive */
+.tab-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+}
+
+.tab-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  display: block;
+  transition: width 0.25s ease, height 0.25s ease;
+}
+
+.tab-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: text-shadow 0.2s ease;
+}
+
+/* ---------- Inactive ---------- */
+.tab-btn:not(.is-active) {
+  opacity: 0.95;
+}
+
+.tab-btn[data-theme='orange']:not(.is-active) .tab-icon {
+  background: rgba(255, 106, 0, 0.12);
+  border: 1px solid rgba(255, 106, 0, 0.3);
+  box-shadow: 0 0 14px rgba(255, 106, 0, 0.25);
+}
+
+.tab-btn[data-theme='green']:not(.is-active) .tab-icon {
+  box-shadow: 0 0 14px rgba(34, 197, 94, 0.25);
+}
+
+.tab-btn[data-theme='blue']:not(.is-active) .tab-icon {
+  box-shadow: 0 0 14px rgba(0, 162, 255, 0.25);
+}
+
+.tab-btn[data-theme='purple']:not(.is-active) .tab-icon {
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.25);
+}
+
+@media (hover: hover) {
+  .tab-btn:not(.is-active):hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .tab-btn:not(.is-active):hover .tab-label {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.45);
+  }
+
+  .tab-btn[data-theme='orange']:not(.is-active):hover .tab-icon {
+    box-shadow: 0 0 20px rgba(255, 106, 0, 0.45);
+  }
+
+  .tab-btn[data-theme='green']:not(.is-active):hover .tab-icon {
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+    transform: scale(1.05);
+  }
+
+  .tab-btn[data-theme='blue']:not(.is-active):hover .tab-icon {
+    box-shadow: 0 0 20px rgba(0, 162, 255, 0.5);
+    transform: scale(1.05);
+  }
+
+  .tab-btn[data-theme='purple']:not(.is-active):hover .tab-icon {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+    transform: scale(1.05);
+  }
+}
+
+/* ---------- Active (solid white capsule) ---------- */
+.tab-btn.is-active {
+  background: #ffffff;
+  color: #0b1727;
+  font-weight: 700;
+  box-shadow:
+    0 0 26px rgba(255, 255, 255, 0.35),
+    0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.tab-btn.is-active:hover {
+  box-shadow:
+    0 0 32px rgba(255, 255, 255, 0.45),
+    0 5px 18px rgba(0, 0, 0, 0.28);
+}
+
+.tab-btn.is-active .tab-icon img {
+  width: 28px;
+  height: 28px;
+}
+
+.tab-btn.is-active[data-theme='orange'] .tab-icon {
+  filter: drop-shadow(0 0 12px rgba(255, 115, 0, 0.7));
+}
+
+.tab-btn.is-active[data-theme='green'] .tab-icon {
+  filter: drop-shadow(0 0 12px rgba(34, 197, 94, 0.7));
+}
+
+.tab-btn.is-active[data-theme='blue'] .tab-icon {
+  filter: drop-shadow(0 0 12px rgba(0, 162, 255, 0.7));
+}
+
+.tab-btn.is-active[data-theme='purple'] .tab-icon {
+  filter: drop-shadow(0 0 12px rgba(168, 85, 247, 0.7));
+}
+
+/* ========================================================
+   RESPONSIVE
+   ======================================================== */
+@media (max-width: 1024px) {
+  .tabs-capsule {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-tabs {
+    bottom: 28px;
+    padding: 0 16px;
+  }
+
+  .tabs-capsule {
+    gap: 10px;
+  }
+
+  .tab-btn {
+    height: 48px;
+    gap: 10px;
+    padding: 0 20px 0 5px;
+    font-size: 15px;
+  }
+
+  .tab-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .tab-icon img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .tab-btn.is-active .tab-icon img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Phones: four equal columns, icon above label - always fits, never scrolls */
+@media (max-width: 600px) {
+  .hero-tabs {
+    bottom: 20px;
+    padding: 0 12px;
+  }
+
+  .tabs-capsule {
+    display: flex;
+    width: 100%;
+    max-width: 440px;
+    gap: 2px;
+    padding: 5px;
+    border-radius: 24px;
+  }
+
+  .tabs-capsule > li {
+    flex: 1 1 0;
+  }
+
+  .tab-btn {
+    width: 100%;
+    height: auto;
+    min-height: 64px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 2px;
+    border-radius: 19px;
+    font-size: clamp(10.5px, 3.3vw, 13px);
+  }
+
+  .tab-label {
+    max-width: 100%;
+  }
+
+  .tab-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tab-icon img,
+  .tab-btn.is-active .tab-icon img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Portrait screens: the tabs sit below the whole video instead of over it (see hero.css) */
+@media (max-aspect-ratio: 1/1) {
+  .hero-tabs {
+    position: static;
+    padding: 20px 16px 28px;
+    background: radial-gradient(ellipse 80% 120% at 50% 0%, rgba(34, 197, 94, 0.14) 0%, transparent 70%);
+  }
+}

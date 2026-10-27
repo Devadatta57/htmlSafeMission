@@ -1,0 +1,355 @@
+/* ========================================================
+   testimonials.css - S.A.F.E. Mission Testimonials
+   Carousel showing 3 / 2 / 1 cards. On phones the arrows
+   move below the card so it can use the full width.
+   ======================================================== */
+
+.testimonials-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f4f8;
+  padding: 60px 24px;
+  font-family: var(--font-sans);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-container {
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Main white rounded board */
+.testimonials-board {
+  width: 100%;
+  min-width: 0;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 36px 40px 34px;
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  position: relative;
+}
+
+.testimonials-main-heading {
+  font-size: clamp(28px, 3.8vw, 42px);
+  font-weight: 900;
+  color: #083c28;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+/* Prev arrow | cards | next arrow, dots underneath */
+.testimonials-carousel {
+  --gap: 20px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-areas:
+    'prev viewport next'
+    '.    dots     .';
+  align-items: center;
+  column-gap: 16px;
+  row-gap: 20px;
+  width: 100%;
+}
+
+.testimonials-arrow-left {
+  grid-area: prev;
+}
+
+.testimonials-arrow-right {
+  grid-area: next;
+}
+
+.testimonials-nav-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #d9e2ec;
+  color: #083c28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s var(--ease-spring);
+  padding: 0;
+  outline: none;
+  flex-shrink: 0;
+  user-select: none;
+  z-index: 5;
+}
+
+.testimonials-nav-arrow svg {
+  width: 22px;
+  height: 22px;
+  stroke: #083c28;
+  transition: stroke 0.2s ease, transform 0.2s ease;
+}
+
+.testimonials-nav-arrow:focus-visible {
+  outline: 3px solid rgba(0, 82, 204, 0.4);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) {
+  .testimonials-nav-arrow:hover {
+    background: #083c28;
+    border-color: #083c28;
+    box-shadow: 0 6px 20px rgba(8, 60, 40, 0.25);
+    transform: scale(1.08);
+  }
+
+  .testimonials-nav-arrow:hover svg {
+    stroke: #ffffff;
+  }
+
+  .testimonials-arrow-left:hover svg {
+    transform: translateX(-2px);
+  }
+
+  .testimonials-arrow-right:hover svg {
+    transform: translateX(2px);
+  }
+}
+
+.testimonials-nav-arrow:active {
+  transform: scale(0.95);
+}
+
+/* Viewport clipping the sliding cards */
+.testimonials-slider-viewport {
+  grid-area: viewport;
+  overflow: hidden;
+  min-width: 0;
+  padding: 8px 4px 14px;
+  margin: -8px -4px -14px;
+  touch-action: pan-y;
+}
+
+.testimonials-slider-track {
+  display: flex;
+  gap: var(--gap);
+  list-style: none;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  width: 100%;
+}
+
+/* Card width = (track - gaps) / visible cards */
+.testimonial-card {
+  --card-w: calc((100% - (var(--visible-cards, 3) - 1) * var(--gap)) / var(--visible-cards, 3));
+  background: #0052cc;
+  border-radius: 18px;
+  padding: 18px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  flex: 0 0 var(--card-w);
+  min-width: 0;
+  min-height: 240px;
+  box-shadow: 0 8px 22px rgba(0, 82, 204, 0.2);
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.25s ease;
+  position: relative;
+}
+
+@media (hover: hover) {
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0, 82, 204, 0.28);
+  }
+}
+
+.card-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.card-quote-icon {
+  width: 24px;
+  height: 24px;
+  fill: #f59e0b;
+  display: block;
+  flex-shrink: 0;
+}
+
+.card-avatar-badge {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 12px;
+  color: #083c28;
+  letter-spacing: -0.02em;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.card-title-text {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0 0 2px 0;
+  letter-spacing: -0.015em;
+}
+
+.card-subtitle-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #93c5fd;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+  display: block;
+}
+
+.card-quote-body {
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 450;
+  margin: 0 0 16px 0;
+  flex: 1;
+}
+
+.card-tag-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+.card-focus-pill {
+  background: #ffffff;
+  color: #083c28;
+  font-size: 10.5px;
+  font-weight: 800;
+  padding: 4.5px 14px;
+  border-radius: 9999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+  letter-spacing: -0.01em;
+}
+
+/* Page dots */
+.testimonials-dots {
+  grid-area: dots;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.testimonials-dot {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.testimonials-dot::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #c7d2e0;
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+
+.testimonials-dot[aria-current='true']::before {
+  width: 22px;
+  background: #0052cc;
+}
+
+.testimonials-dot:focus-visible {
+  outline: 2px solid rgba(0, 82, 204, 0.5);
+}
+
+/* ========================================================
+   RESPONSIVE
+   ======================================================== */
+@media (max-width: 960px) {
+  .testimonials-board {
+    padding: 30px 24px 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .testimonials-section {
+    padding: 56px 16px 64px;
+    min-height: 0;
+  }
+
+  .testimonials-board {
+    padding: 24px 14px 20px;
+    border-radius: 18px;
+  }
+
+  .testimonials-main-heading {
+    margin-bottom: 18px;
+  }
+
+  /* Card on its own row, arrows and dots below it */
+  .testimonials-carousel {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+      'viewport viewport viewport'
+      'prev     dots     next';
+    row-gap: 16px;
+    column-gap: 8px;
+  }
+
+  .testimonial-card {
+    min-height: 0;
+    padding: 20px 18px 18px;
+  }
+
+  .card-title-text {
+    font-size: 16.5px;
+  }
+
+  .card-subtitle-text {
+    font-size: 13px;
+  }
+
+  .card-quote-body {
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .card-focus-pill {
+    font-size: 11.5px;
+  }
+
+  .testimonials-nav-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .testimonials-nav-arrow svg {
+    width: 20px;
+    height: 20px;
+  }
+}

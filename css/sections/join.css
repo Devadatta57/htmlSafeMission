@@ -1,0 +1,602 @@
+/* ========================================================
+   join.css - "Join Safe Mission"
+   Full-screen section: photo card on the left, form card
+   on the right, soft green shapes in the background.
+   ======================================================== */
+
+.join-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(40px, 9vh, 96px) clamp(16px, 2.5vw, 48px);
+  overflow: hidden;
+  background: linear-gradient(180deg, #f8faf8 0%, #f3f7f4 100%);
+  font-family: var(--font-sans);
+}
+
+/* ---------- Background shapes ---------- */
+.join-blob {
+  position: absolute;
+  z-index: 0;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Green circle peeking out above the photo */
+.join-blob-top {
+  width: clamp(110px, 9.5vw, 180px);
+  aspect-ratio: 1;
+  left: calc(16% - clamp(55px, 4.75vw, 90px));
+  top: calc(clamp(40px, 9vh, 96px) - clamp(95px, 8.2vw, 155px));
+  background: linear-gradient(160deg, #d3f1cf 0%, #8fdc8f 55%, #5cc76a 100%);
+  opacity: 0.85;
+}
+
+/* Pale mint curve along the left edge */
+.join-blob-left {
+  width: 560px;
+  aspect-ratio: 1;
+  left: -470px;
+  top: -80px;
+  background: linear-gradient(90deg, #e3f2e6 0%, #edf7ef 100%);
+}
+
+/* Pale mint swoosh at the bottom left */
+.join-blob-bottom {
+  width: 620px;
+  aspect-ratio: 1;
+  left: -330px;
+  bottom: -520px;
+  background: linear-gradient(20deg, #e1f1e4 0%, #eef7f0 100%);
+}
+
+/* ---------- Layout ---------- */
+.join-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1840px;
+  min-height: 80vh;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); /* photo narrower, form wider */
+  gap: clamp(16px, 1.6vw, 32px);
+  align-items: stretch;
+}
+
+/* ---------- Photo card ---------- */
+.join-media {
+  position: relative;
+  min-height: 360px;
+  border-radius: clamp(20px, 2.3vw, 40px);
+  overflow: hidden;
+  background: #dfe9e2;
+  box-shadow:
+    0 26px 60px -22px rgba(16, 60, 32, 0.35),
+    0 6px 18px rgba(16, 60, 32, 0.08);
+}
+
+.join-media-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 92% center; /* keep the drone in view */
+  display: block;
+}
+
+/* ---------- Form card ---------- */
+.join-card {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 7vh, 72px) clamp(20px, 2vw, 36px);
+  background: #ffffff;
+  border-radius: clamp(20px, 2.3vw, 40px);
+  box-shadow:
+    0 26px 60px -26px rgba(16, 60, 32, 0.22),
+    0 4px 14px rgba(16, 60, 32, 0.05);
+}
+
+/* Yellow-green crescent in the top-right corner */
+.join-card-blob {
+  position: absolute;
+  top: calc(clamp(130px, 13.5vw, 250px) * -0.5);
+  right: calc(clamp(130px, 13.5vw, 250px) * -0.12);
+  width: clamp(130px, 13.5vw, 250px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(200deg, #e9f0c4 0%, #f4f1d1 55%, #fbf8e6 100%);
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.join-card-blob::after {
+  content: '';
+  position: absolute;
+  top: 18%;
+  right: -34%;
+  width: 82%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: linear-gradient(215deg, #47bb55 0%, #78cc72 45%, #b5e2a0 100%);
+}
+
+.join-title {
+  position: relative;
+  margin: 0 0 clamp(10px, 1.6vh, 16px);
+  padding-right: 48px; /* clear of the corner crescent */
+  font-size: clamp(30px, 2.65vw, 50px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #174d33;
+}
+
+.join-subtitle {
+  position: relative;
+  margin: 0 0 clamp(24px, 5vh, 48px);
+  font-size: clamp(14.5px, 1.07vw, 19px);
+  line-height: 1.5;
+  color: #5b6470;
+}
+
+.join-form {
+  position: relative;
+}
+
+.join-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(14px, 1.15vw, 20px);
+  row-gap: clamp(16px, 2.6vh, 26px);
+}
+
+.join-field {
+  min-width: 0;
+}
+
+.join-field-wide {
+  grid-column: 1 / -1;
+}
+
+.join-label {
+  display: block;
+  margin-bottom: clamp(7px, 1.1vh, 11px);
+  font-size: clamp(14px, 0.93vw, 16.5px);
+  font-weight: 700;
+  color: #1f5135;
+}
+
+.join-control {
+  position: relative;
+}
+
+.join-control-icon {
+  position: absolute;
+  left: clamp(14px, 1.15vw, 20px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(19px, 1.35vw, 24px);
+  height: clamp(19px, 1.35vw, 24px);
+  color: #374151;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Message box: icon sits on the first line */
+.join-field-wide .join-control-icon {
+  top: clamp(14px, 1.7vh, 18px);
+  transform: none;
+}
+
+.join-input {
+  width: 100%;
+  height: clamp(48px, 7vh, 62px);
+  padding: 0 16px 0 clamp(46px, 3.9vw, 70px);
+  border: 1.5px solid #e0e6e3;
+  border-radius: 12px;
+  background: #ffffff;
+  font: inherit;
+  font-size: clamp(15px, 0.98vw, 17px); /* >= 15px: no zoom-on-focus on iOS at 16px base */
+  color: #1f2937;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.join-input::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+.join-input:hover {
+  border-color: #c9d4ce;
+}
+
+.join-input:focus {
+  outline: none;
+  border-color: #2f8a52;
+  box-shadow: 0 0 0 4px rgba(47, 138, 82, 0.14);
+}
+
+.join-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 48px;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.join-select:invalid {
+  color: #6b7280;
+}
+
+.join-select option {
+  color: #1f2937;
+}
+
+.join-select-chevron {
+  position: absolute;
+  right: clamp(14px, 1.15vw, 20px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(18px, 1.25vw, 22px);
+  height: clamp(18px, 1.25vw, 22px);
+  color: #1f2937;
+  pointer-events: none;
+}
+
+.join-textarea {
+  display: block;
+  height: auto;
+  min-height: clamp(76px, 9.5vh, 86px);
+  padding-top: clamp(13px, 1.6vh, 16px);
+  padding-bottom: 12px;
+  line-height: 1.5;
+  resize: vertical;
+}
+
+/* Mobile number: one box holding the country code picker and the number */
+.join-phone {
+  display: flex;
+  align-items: center;
+  padding-left: clamp(42px, 3.3vw, 58px);
+  padding-right: 0;
+}
+
+.join-phone:focus-within {
+  border-color: #2f8a52;
+  box-shadow: 0 0 0 4px rgba(47, 138, 82, 0.14);
+}
+
+.join-code {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  height: 60%;
+  padding-right: clamp(6px, 0.5vw, 9px);
+  margin-right: clamp(8px, 0.65vw, 11px);
+  border-right: 1.5px solid #e0e6e3;
+  font-size: 0.92em;
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+}
+
+.join-code-chevron {
+  width: 12px;
+  height: 12px;
+  color: #4b5563;
+}
+
+/* The native list opens from here, but stays invisible: only "+91 v" shows */
+.join-code-select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.join-code:focus-within {
+  border-radius: 4px;
+  outline: 2px solid rgba(47, 138, 82, 0.5);
+  outline-offset: 2px;
+}
+
+.join-phone-input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 14px 0 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+}
+
+.join-phone-input:focus {
+  outline: none;
+}
+
+.join-phone-input::placeholder {
+  color: #6b7280;
+  opacity: 1;
+}
+
+/* Validation, hint and character counter */
+.has-error .join-input {
+  border-color: #e05252;
+}
+
+.has-error .join-input:focus,
+.has-error .join-phone:focus-within {
+  border-color: #e05252;
+  box-shadow: 0 0 0 4px rgba(224, 82, 82, 0.14);
+}
+
+.join-help {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 6px;
+}
+
+.join-help:empty,
+.join-help[hidden] {
+  display: none;
+}
+
+.join-error,
+.join-hint {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.join-error {
+  color: #d93838;
+}
+
+.join-error:empty {
+  display: none;
+}
+
+.join-hint {
+  color: #6b7280;
+}
+
+.join-counter {
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b7280;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.join-counter.is-ok {
+  color: #1d7a44;
+}
+
+/* ---------- Submit ---------- */
+.join-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: clamp(18px, 2.4vh, 26px) auto 0;
+  padding: clamp(13px, 1.9vh, 17px) clamp(36px, 3vw, 54px);
+  border: 0;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #1e5c3d 0%, #174d33 100%);
+  color: #ffffff;
+  font: inherit;
+  font-size: clamp(16px, 1.15vw, 20px);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 12px 24px -10px rgba(23, 77, 51, 0.6);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.join-submit:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, #19513a 0%, #123f29 100%);
+  box-shadow: 0 16px 28px -10px rgba(23, 77, 51, 0.65);
+}
+
+.join-submit:active {
+  transform: translateY(0);
+}
+
+.join-submit:focus-visible {
+  outline: 3px solid rgba(47, 138, 82, 0.45);
+  outline-offset: 3px;
+}
+
+.join-submit-icon {
+  width: 1.05em;
+  height: 1.05em;
+  transition: transform 0.2s ease;
+}
+
+.join-submit:hover .join-submit-icon {
+  transform: translateX(3px);
+}
+
+.join-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #1d7a44;
+  text-align: center;
+}
+
+/* Stays in the page (a live region must exist before it changes); shown once filled */
+.join-success:not(.is-visible) {
+  margin: 0;
+}
+
+.join-success:not(.is-visible) .join-success-icon {
+  display: none;
+}
+
+.join-success-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ========================================================
+   RESPONSIVE (TABLETS & MOBILE)
+   ======================================================== */
+@media (max-width: 960px) {
+  .join-section {
+    min-height: 0;
+    padding: 56px 16px 64px;
+  }
+
+  .join-container {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .join-media {
+    min-height: 0;
+    aspect-ratio: 16 / 10;
+    max-height: 440px;
+  }
+
+  .join-card {
+    padding: 36px 22px 32px;
+  }
+
+  .join-card-blob {
+    width: 150px;
+    top: -68px;
+    right: -34px;
+  }
+
+  .join-title {
+    font-size: clamp(28px, 6vw, 38px);
+  }
+
+  .join-subtitle {
+    font-size: 15px;
+    margin-bottom: 28px;
+  }
+
+  .join-label {
+    font-size: 14.5px;
+  }
+
+  .join-input {
+    height: 52px;
+    padding-left: 48px;
+    font-size: 16px;
+  }
+
+  .join-textarea {
+    height: auto;
+    min-height: 104px;
+    padding-top: 14px;
+  }
+
+  .join-phone {
+    padding-left: 46px;
+  }
+
+  .join-control-icon {
+    left: 15px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .join-field-wide .join-control-icon {
+    top: 15px;
+  }
+
+  .join-select-chevron {
+    right: 16px;
+  }
+
+  .join-submit {
+    font-size: 17px;
+    padding: 14px 44px;
+  }
+}
+
+@media (max-width: 560px) {
+  .join-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .join-card {
+    padding: 30px 18px 28px;
+  }
+
+  .join-media {
+    aspect-ratio: 4 / 3;
+  }
+
+  .join-submit {
+    width: 100%;
+  }
+
+  .join-success {
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+@media (max-width: 380px) {
+  .join-card {
+    padding: 26px 14px 24px;
+  }
+
+  .join-input {
+    padding-left: 42px;
+  }
+
+  .join-phone {
+    padding-left: 40px;
+  }
+
+  .join-control-icon {
+    left: 12px;
+    width: 19px;
+    height: 19px;
+  }
+
+  .join-code {
+    margin-right: 8px;
+  }
+
+  /* Keeps the whole placeholder visible beside the country code; typed text stays 16px */
+  .join-phone-input {
+    padding-right: 8px;
+  }
+
+  .join-phone-input::placeholder {
+    font-size: 14px;
+  }
+}

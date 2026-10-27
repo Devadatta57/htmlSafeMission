@@ -1,0 +1,39 @@
+/* ========================================================
+   hero.css - Full-screen video header
+   ======================================================== */
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  height: 100svh; /* mobile: excludes the browser toolbar */
+  min-height: 320px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Portrait screens (phones, upright tablets): `cover` would crop the 16:9 video down to
+   its middle third and cut off its centred title, so show the whole video instead and
+   put the tabs on black underneath it (see tabs.css). */
+@media (max-aspect-ratio: 1/1) {
+  .hero {
+    height: auto;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .hero-video {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}

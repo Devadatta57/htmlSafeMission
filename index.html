@@ -1,0 +1,1363 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SafeMission</title>
+    <meta
+      name="description"
+      content="S.A.F.E. Mission – Sustainable Agriculture for Farm Exports. Multi-layer farming with value addition that connects district farmers to global export markets."
+    />
+    <meta name="theme-color" content="#064e3b" />
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&family=Roboto+Condensed:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles: base -> components -> sections -->
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/base/reset.css" />
+    <link rel="stylesheet" href="css/base/base.css" />
+    <link rel="stylesheet" href="css/components/hero.css" />
+    <link rel="stylesheet" href="css/components/tabs.css" />
+    <link rel="stylesheet" href="css/sections/about.css" />
+    <link rel="stylesheet" href="css/sections/objectives.css" />
+    <link rel="stylesheet" href="css/sections/why.css" />
+    <link rel="stylesheet" href="css/sections/how.css" />
+    <link rel="stylesheet" href="css/sections/district.css" />
+    <link rel="stylesheet" href="css/sections/join.css" />
+    <link rel="stylesheet" href="css/sections/testimonials.css" />
+
+    <!-- Scripts: deferred, run in this order after the page is parsed -->
+    <script src="js/utils/dom.js" defer></script>
+    <script src="js/data/country-codes.js" defer></script>
+    <script src="js/data/ap-districts.js" defer></script>
+    <script src="js/components/tabs.js" defer></script>
+    <script src="js/components/objectives.js" defer></script>
+    <script src="js/components/how-journey.js" defer></script>
+    <script src="js/components/join-form.js" defer></script>
+    <script src="js/components/testimonials.js" defer></script>
+    <script src="js/main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <!-- Shared icon sprite (objective icons are used twice per card) -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="icon-obj-leaf" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2C6.5 2 2 6.5 2 12c0 2.2.7 4.2 2 5.8L3 21l3.5-.9C8.1 21.3 10 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm1 14.8c-.3.1-.7.2-1 .2-3.3 0-6-2.7-6-6 0-.3.1-.7.2-1 1.7.3 3.5 1.2 4.8 2.5 1.3 1.3 2.2 3.1 2 4.3z" opacity="0.15" />
+          <path d="M20.5 3.5c-4.5.3-9 2.5-11.8 6.2C6.4 12.6 6 15.6 6.5 18.5c.3 1.4 1 2.5 2.1 3.2.7.4 1.5.5 2.4.3 2.8-.5 5.2-2.1 6.8-4.5 3.3-4.8 3.5-10 2.7-14zM10.2 18c-.8-1.5-.7-3.4.2-4.9 1.4-2.3 3.8-3.8 6.4-4.2-1.2 3.4-3.3 6.3-6.6 9.1z" />
+          <path d="M7 17.5c-2.2-.5-3.8-2.2-4.2-4.5-.4-2.5.4-4.8 2-6.5 2.5-2.7 6.2-4 9.7-3.8-1.5 2-2.3 4.4-2.1 7 .1 1.8.8 3.5 2 4.8-2.4 1.5-5 2.4-7.4 3z" opacity="0.85" />
+        </symbol>
+        <symbol id="icon-obj-factory" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M4 19V9l6 3.5V9l6 3.5V5h4v14H4zm1-1h14V6h-2v8.5l-6-3.5v3.5L5 11v7zm8-3h2v2h-2v-2zm-4 0h2v2H9v-2zm-4 0h2v2H5v-2z" />
+        </symbol>
+        <symbol id="icon-obj-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        </symbol>
+        <symbol id="icon-obj-coins" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M7 6c0-1.66 2.24-3 5-3s5 1.34 5 3-2.24 3-5 3-5-1.34-5-3zm0 4.5c0 1.66 2.24 3 5 3s5-1.34 5-3v-1.8c-1.35.8-3.07 1.3-5 1.3s-3.65-.5-5-1.3v1.8zm0 4.5c0 1.66 2.24 3 5 3s5-1.34 5-3v-1.8c-1.35.8-3.07 1.3-5 1.3s-3.65-.5-5-1.3v1.8z" />
+          <path d="M14 19c0 .7-.37 1.35-1 1.83v2.1c2.89-.34 5-1.74 5-3.43v-1.8c-1.12.67-2.48 1.13-4 1.3z" opacity="0.6" />
+        </symbol>
+        <symbol id="icon-obj-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- ======================================================
+         HERO: full-screen video + section tabs
+         ====================================================== -->
+    <header class="hero" id="top">
+      <video class="hero-video" src="assets/videos/safemission.mp4" autoplay loop muted playsinline preload="auto" aria-hidden="true"></video>
+
+      <nav class="hero-tabs" aria-label="Page sections">
+        <ul class="tabs-capsule">
+          <li>
+            <a class="tab-btn is-active" href="#about" data-theme="orange" aria-current="true">
+              <span class="tab-icon"><img src="assets/icons/tab-about.svg" alt="" width="28" height="28" /></span>
+              <span class="tab-label">About</span>
+            </a>
+          </li>
+          <li>
+            <a class="tab-btn" href="#objectives" data-theme="green">
+              <span class="tab-icon"><img src="assets/icons/tab-obj.svg" alt="" width="28" height="28" /></span>
+              <span class="tab-label">Objectives</span>
+            </a>
+          </li>
+          <li>
+            <a class="tab-btn" href="#why" data-theme="blue">
+              <span class="tab-icon"><img src="assets/icons/tab-why.svg" alt="" width="28" height="28" /></span>
+              <span class="tab-label">Why</span>
+            </a>
+          </li>
+          <li>
+            <a class="tab-btn" href="#how" data-theme="purple">
+              <span class="tab-icon"><img src="assets/icons/tab-how.svg" alt="" width="28" height="28" /></span>
+              <span class="tab-label">How</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- ======================================================
+           ABOUT
+           ====================================================== -->
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <div class="about-top-accent" aria-hidden="true"></div>
+
+        <!-- Shared clip shape for the hexagon photo frames -->
+        <svg class="about-defs" width="0" height="0" aria-hidden="true" focusable="false">
+          <defs>
+            <clipPath id="aboutHexClip" clipPathUnits="objectBoundingBox">
+              <path d="M0.46 0.02 Q0.5 0 0.54 0.02 L0.96 0.23 Q1 0.25 1 0.29 L1 0.71 Q1 0.75 0.96 0.77 L0.54 0.98 Q0.5 1 0.46 0.98 L0.04 0.77 Q0 0.75 0 0.71 L0 0.29 Q0 0.25 0.04 0.23 Z" />
+            </clipPath>
+          </defs>
+        </svg>
+
+        <div class="about-container">
+          <!-- Left column: text and value cards -->
+          <div class="about-content-col">
+            <div class="about-accent-badge" aria-hidden="true">
+              <span class="accent-pill-orange"></span>
+              <span class="accent-pill-green"></span>
+            </div>
+
+            <h2 class="about-title" id="about-title">About <span class="title-green">SAFE Mission</span></h2>
+
+            <h3 class="about-subtitle"><span class="subtitle-brand">S.A.F.E.</span> – Sustainable Agriculture for Farm Exports</h3>
+
+            <p class="about-desc">
+              The S.A.F.E. Mission is a scalable initiative which aims to make farming more efficient and precisely export-oriented through the concept
+              of <strong class="desc-highlight">“multi-layer farming with value addition”</strong>. By multiplying farmers’ incomes and creating global
+              market opportunities, the mission ultimately transforms farmers into successful agripreneurs.
+            </p>
+
+            <div class="about-cards-row">
+              <!-- Faint hexagon + diagonal band behind the Vision card -->
+              <svg class="about-cards-decor" viewBox="0 0 140 200" aria-hidden="true">
+                <polygon points="0,18 38,18 140,200 102,200" fill="#e4f2e2" opacity="0.75" />
+                <path d="M36 0 L58 0 L70 19 L58 38 L36 38 L24 19 Z" fill="#d3eacf" opacity="0.85" />
+              </svg>
+
+              <!-- Vision -->
+              <div class="about-value-card vision">
+                <svg class="about-card-panel" viewBox="0 0 300 140" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="aboutPanelFill-vision" x1="0" y1="0" x2="1" y2="0.4">
+                      <stop offset="0%" class="panel-fill-a" />
+                      <stop offset="100%" class="panel-fill-b" />
+                    </linearGradient>
+                  </defs>
+                  <polygon class="panel-border" points="28,0 272,0 300,70 272,140 28,140 0,70" />
+                  <polygon class="panel-fill" points="28,0 272,0 300,70 272,140 28,140 0,70" fill="url(#aboutPanelFill-vision)" stroke="url(#aboutPanelFill-vision)" />
+                </svg>
+
+                <div class="about-card-icon" aria-hidden="true">
+                  <svg class="about-icon-hex" viewBox="0 0 100 110">
+                    <defs>
+                      <linearGradient id="aboutIconHex-vision" x1="1" y1="0" x2="0" y2="1">
+                        <stop offset="0%" class="icon-hex-a" />
+                        <stop offset="100%" class="icon-hex-b" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M42.96 8.08 Q50 4 57.04 8.08 L86.96 25.42 Q94 29.5 94 37.66 L94 72.34 Q94 80.5 86.96 84.58 L57.04 101.92 Q50 106 42.96 101.92 L13.04 84.58 Q6 80.5 6 72.34 L6 37.66 Q6 29.5 13.04 25.42 Z" fill="url(#aboutIconHex-vision)" />
+                    <path d="M43.92 14.52 Q50 11 56.08 14.52 L81.92 29.48 Q88 33 88 40.04 L88 69.96 Q88 77 81.92 80.52 L56.08 95.48 Q50 99 43.92 95.48 L18.08 80.52 Q12 77 12 69.96 L12 40.04 Q12 33 18.08 29.48 Z" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2" />
+                  </svg>
+                  <svg class="about-card-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.6v2.3M6.4 4.4l1.3 1.9M17.6 4.4l-1.3 1.9" />
+                    <path d="M2.4 13.6c2.4-3.7 5.6-5.6 9.6-5.6s7.2 1.9 9.6 5.6c-2.4 3.7-5.6 5.6-9.6 5.6s-7.2-1.9-9.6-5.6z" />
+                    <circle cx="12" cy="13.6" r="3" fill="currentColor" stroke="none" />
+                  </svg>
+                </div>
+
+                <svg class="about-card-mini-hex" viewBox="0 0 24 27" aria-hidden="true">
+                  <path d="M10.08 1.08 Q12 0 13.92 1.08 L22.08 5.67 Q24 6.75 24 8.91 L24 18.09 Q24 20.25 22.08 21.33 L13.92 25.92 Q12 27 10.08 25.92 L1.92 21.33 Q0 20.25 0 18.09 L0 8.91 Q0 6.75 1.92 5.67 Z" />
+                </svg>
+
+                <div class="about-card-body">
+                  <h4 class="about-card-heading">VISION</h4>
+                  <span class="about-card-line" aria-hidden="true"></span>
+                  <p class="about-card-copy">
+                    Build a prosperous farming community through sustainable agriculture, cooperative ownership and global market opportunities.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Mission -->
+              <div class="about-value-card mission">
+                <svg class="about-card-panel" viewBox="0 0 300 140" preserveAspectRatio="none" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="aboutPanelFill-mission" x1="0" y1="0" x2="1" y2="0.4">
+                      <stop offset="0%" class="panel-fill-a" />
+                      <stop offset="100%" class="panel-fill-b" />
+                    </linearGradient>
+                  </defs>
+                  <polygon class="panel-border" points="28,0 272,0 300,70 272,140 28,140 0,70" />
+                  <polygon class="panel-fill" points="28,0 272,0 300,70 272,140 28,140 0,70" fill="url(#aboutPanelFill-mission)" stroke="url(#aboutPanelFill-mission)" />
+                </svg>
+
+                <div class="about-card-icon" aria-hidden="true">
+                  <svg class="about-icon-hex" viewBox="0 0 100 110">
+                    <defs>
+                      <linearGradient id="aboutIconHex-mission" x1="1" y1="0" x2="0" y2="1">
+                        <stop offset="0%" class="icon-hex-a" />
+                        <stop offset="100%" class="icon-hex-b" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M42.96 8.08 Q50 4 57.04 8.08 L86.96 25.42 Q94 29.5 94 37.66 L94 72.34 Q94 80.5 86.96 84.58 L57.04 101.92 Q50 106 42.96 101.92 L13.04 84.58 Q6 80.5 6 72.34 L6 37.66 Q6 29.5 13.04 25.42 Z" fill="url(#aboutIconHex-mission)" />
+                    <path d="M43.92 14.52 Q50 11 56.08 14.52 L81.92 29.48 Q88 33 88 40.04 L88 69.96 Q88 77 81.92 80.52 L56.08 95.48 Q50 99 43.92 95.48 L18.08 80.52 Q12 77 12 69.96 L12 40.04 Q12 33 18.08 29.48 Z" fill="none" stroke="#ffffff" stroke-opacity="0.16" stroke-width="2" />
+                  </svg>
+                  <svg class="about-card-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="13" r="8.6" />
+                    <circle cx="11" cy="13" r="5.1" />
+                    <circle cx="11" cy="13" r="1.7" fill="currentColor" stroke="none" />
+                    <path d="M11 13l9-9" />
+                    <path d="M16.4 3.6l.1 3.9 3.9.1" />
+                  </svg>
+                </div>
+
+                <svg class="about-card-mini-hex" viewBox="0 0 24 27" aria-hidden="true">
+                  <path d="M10.08 1.08 Q12 0 13.92 1.08 L22.08 5.67 Q24 6.75 24 8.91 L24 18.09 Q24 20.25 22.08 21.33 L13.92 25.92 Q12 27 10.08 25.92 L1.92 21.33 Q0 20.25 0 18.09 L0 8.91 Q0 6.75 1.92 5.67 Z" />
+                </svg>
+
+                <div class="about-card-body">
+                  <h4 class="about-card-heading">MISSION</h4>
+                  <span class="about-card-line" aria-hidden="true"></span>
+                  <p class="about-card-copy">
+                    Transform fragmented production into an integrated, sustainable, value-added and export-oriented district agricultural ecosystem.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right column: hexagon photo cluster on a colour backdrop -->
+          <div class="about-visual-col">
+            <div class="about-stage">
+              <svg class="visual-backdrop-svg" viewBox="0 0 424 426" aria-hidden="true">
+                <defs>
+                  <linearGradient id="aboutPlaneBase" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="426">
+                    <stop offset="0%" stop-color="#168fcd" />
+                    <stop offset="28%" stop-color="#17a2b2" />
+                    <stop offset="55%" stop-color="#23aa64" />
+                    <stop offset="80%" stop-color="#3eb24a" />
+                    <stop offset="100%" stop-color="#6fbf42" />
+                  </linearGradient>
+                  <radialGradient id="aboutPlaneLime" gradientUnits="userSpaceOnUse" cx="430" cy="410" r="190">
+                    <stop offset="0%" stop-color="#e2e52b" />
+                    <stop offset="55%" stop-color="#b9d838" stop-opacity="0.7" />
+                    <stop offset="100%" stop-color="#b9d838" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="aboutPlaneCyan" gradientUnits="userSpaceOnUse" cx="430" cy="140" r="140">
+                    <stop offset="0%" stop-color="#30c6ea" stop-opacity="0.95" />
+                    <stop offset="100%" stop-color="#30c6ea" stop-opacity="0" />
+                  </radialGradient>
+                  <radialGradient id="aboutPlaneBlue" gradientUnits="userSpaceOnUse" cx="250" cy="-10" r="150">
+                    <stop offset="0%" stop-color="#1478cc" stop-opacity="0.75" />
+                    <stop offset="100%" stop-color="#1478cc" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="aboutPlaneGreen" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="323">
+                    <stop offset="0%" stop-color="#2f9f50" />
+                    <stop offset="100%" stop-color="#23904a" />
+                  </linearGradient>
+                  <linearGradient id="aboutStripeDark" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#228a43" />
+                    <stop offset="100%" stop-color="#11612f" />
+                  </linearGradient>
+                  <radialGradient id="aboutWashMint">
+                    <stop offset="0%" stop-color="#c8ecee" stop-opacity="0.8" />
+                    <stop offset="100%" stop-color="#c8ecee" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="aboutHexOrange" x1="1" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#fbab3c" />
+                    <stop offset="100%" stop-color="#f07818" />
+                  </linearGradient>
+                  <linearGradient id="aboutHexGreen" x1="1" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#5cbf4c" />
+                    <stop offset="100%" stop-color="#24873f" />
+                  </linearGradient>
+                  <linearGradient id="aboutHexDeep" x1="1" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#4cb04d" />
+                    <stop offset="100%" stop-color="#176a33" />
+                  </linearGradient>
+                  <!-- Dot grid tile: dots every 9.5 units, aligned so both grids land on the same lattice -->
+                  <pattern id="aboutDots" x="2.25" y="5.25" width="9.5" height="9.5" patternUnits="userSpaceOnUse">
+                    <circle cx="4.75" cy="4.75" r="1.6" fill="#c3ccd4" />
+                  </pattern>
+                </defs>
+
+                <!-- Main colour plane (hexagon edges at 30 degrees) -->
+                <polygon points="69,-146 1100,449 1100,700 722,700 69,323" fill="url(#aboutPlaneBase)" />
+                <polygon points="69,-146 1100,449 1100,700 722,700 69,323" fill="url(#aboutPlaneBlue)" />
+                <polygon points="69,-146 1100,449 1100,700 722,700 69,323" fill="url(#aboutPlaneCyan)" />
+                <polygon points="69,-146 1100,449 1100,700 722,700 69,323" fill="url(#aboutPlaneLime)" />
+
+                <!-- Green vertical plane on the left of the colour block -->
+                <polygon points="69,-400 135,-400 135,285 69,323" fill="url(#aboutPlaneGreen)" />
+
+                <!-- Ghost hexagon inside the colour block -->
+                <path d="M162.96 14.205 Q168 12 173.04 14.205 L198.96 25.545 Q204 27.75 204 32.16 L204 54.84 Q204 59.25 198.96 61.455 L173.04 72.795 Q168 75 162.96 72.795 L137.04 61.455 Q132 59.25 132 54.84 L132 32.16 Q132 27.75 137.04 25.545 Z" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.4" />
+
+                <!-- Dark green stripe and mint wash at the bottom -->
+                <polygon points="90,355 600,649 600,679 90,385" fill="url(#aboutStripeDark)" />
+                <ellipse cx="70" cy="440" rx="150" ry="70" fill="url(#aboutWashMint)" />
+
+                <!-- Dot grids (8 x 5 and 7 x 4) -->
+                <rect x="344.25" y="24.25" width="76" height="47.5" fill="url(#aboutDots)" />
+                <rect x="21.25" y="347.25" width="66.5" height="38" fill="url(#aboutDots)" />
+
+                <!-- Decorative hexagons behind the photos -->
+                <path d="M20.04 19.12 Q22 18 23.96 19.12 L34.04 24.88 Q36 26 36 28.24 L36 39.76 Q36 42 34.04 43.12 L23.96 48.88 Q22 50 20.04 48.88 L9.96 43.12 Q8 42 8 39.76 L8 28.24 Q8 26 9.96 24.88 Z" fill="#ffffff" fill-opacity="0.6" stroke="#93cf95" stroke-width="1.6" />
+                <path d="M47.02 19.56 Q48 19 48.98 19.56 L54.02 22.44 Q55 23 55 24.12 L55 29.88 Q55 31 54.02 31.56 L48.98 34.44 Q48 35 47.02 34.44 L41.98 31.56 Q41 31 41 29.88 L41 24.12 Q41 23 41.98 22.44 Z" fill="none" stroke="#c9d3da" stroke-width="1.2" />
+                <path d="M-18.76 69 Q-17 68 -15.24 69 L-7.76 73.25 Q-6 74.25 -6 76.25 L-6 84.75 Q-6 86.75 -7.76 87.75 L-15.24 92 Q-17 93 -18.76 92 L-26.24 87.75 Q-28 86.75 -28 84.75 L-28 76.25 Q-28 74.25 -26.24 73.25 Z" fill="url(#aboutHexOrange)" />
+                <path d="M37.76 178.24 Q40 177 42.24 178.24 L51.76 183.51 Q54 184.75 54 187.23 L54 197.77 Q54 200.25 51.76 201.49 L42.24 206.76 Q40 208 37.76 206.76 L28.24 201.49 Q26 200.25 26 197.77 L26 187.23 Q26 184.75 28.24 183.51 Z" fill="url(#aboutHexGreen)" />
+              </svg>
+
+              <!-- Three photo frames (honeycomb cluster) -->
+              <div class="cluster-frame frame-hex-big">
+                <div class="hex-border-pad">
+                  <div class="hex-media-container">
+                    <img src="assets/images/about/about-farmers.webp" alt="Prosperous Farming Community" class="cluster-img main-crop-img" width="1602" height="675" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="cluster-frame frame-hex-top">
+                <div class="hex-border-pad">
+                  <div class="hex-media-container">
+                    <img src="assets/images/about/about-smart-farm.webp" alt="S.A.F.E. Mission Smart Multi-Layer Farming" class="cluster-img" width="840" height="675" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+              <div class="cluster-frame frame-hex-bottom">
+                <div class="hex-border-pad">
+                  <div class="hex-media-container">
+                    <img src="assets/images/about/about-ship.webp" alt="S.A.F.E. Mission Global Farm Exports Ship" class="cluster-img" width="1602" height="675" loading="lazy" decoding="async" />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Foreground decorative hexagons -->
+              <svg class="visual-front-svg" viewBox="0 0 424 426" aria-hidden="true">
+                <path d="M152.6 329.36 Q155 328 157.4 329.36 L167.6 335.14 Q170 336.5 170 339.22 L170 350.78 Q170 353.5 167.6 354.86 L157.4 360.64 Q155 362 152.6 360.64 L142.4 354.86 Q140 353.5 140 350.78 L140 339.22 Q140 336.5 142.4 335.14 Z" fill="url(#aboutHexOrange)" />
+                <path d="M320.4 322.04 Q324 320 327.6 322.04 L350.4 334.96 Q354 337 354 341.08 L354 366.92 Q354 371 350.4 373.04 L327.6 385.96 Q324 388 320.4 385.96 L297.6 373.04 Q294 371 294 366.92 L294 341.08 Q294 337 297.6 334.96 Z" fill="url(#aboutHexDeep)" stroke="#ffffff" stroke-opacity="0.85" stroke-width="2" />
+                <path d="M363.88 334.63 Q365 334 366.12 334.63 L371.88 337.87 Q373 338.5 373 339.76 L373 346.24 Q373 347.5 371.88 348.13 L366.12 351.37 Q365 352 363.88 351.37 L358.12 348.13 Q357 347.5 357 346.24 L357 339.76 Q357 338.5 358.12 337.87 Z" fill="none" stroke="#ffffff" stroke-opacity="0.85" stroke-width="1.3" />
+                <path d="M362.6 368.805 Q364 368 365.4 368.805 L372.6 372.945 Q374 373.75 374 375.36 L374 383.64 Q374 385.25 372.6 386.055 L365.4 390.195 Q364 391 362.6 390.195 L355.4 386.055 Q354 385.25 354 383.64 L354 375.36 Q354 373.75 355.4 372.945 Z" fill="none" stroke="#ffffff" stroke-width="1.5" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           OBJECTIVES
+           ====================================================== -->
+      <section class="objectives-section" id="objectives" aria-labelledby="objectives-title">
+        <div class="objectives-container">
+          <div class="objectives-header">
+            <h2 class="objectives-title" id="objectives-title">Five Core <span class="title-orange">Business Objectives</span></h2>
+            <div class="objectives-pill-indicator" aria-hidden="true">
+              <span class="pill-bar-green"></span>
+              <span class="pill-bar-orange"></span>
+            </div>
+            <p class="objectives-subtitle">Building a stronger, more connected and prosperous agricultural ecosystem</p>
+          </div>
+
+          <div class="objectives-grid">
+            <!-- 01 -->
+            <article class="obj-card theme-green" data-objective="1">
+              <div class="obj-image-wrapper">
+                <div class="obj-image-clip">
+                  <img src="assets/images/objectives/obj1.webp" alt="Multi-Layer Agricultural Production crop rows" class="obj-image" width="1200" height="699" loading="lazy" decoding="async" />
+                </div>
+                <div class="badge-row">
+                  <span class="num-pill">01</span>
+                  <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-leaf" /></svg></span>
+                </div>
+              </div>
+              <div class="obj-content-box">
+                <h3 class="obj-card-title">Multi-Layer Agricultural Production</h3>
+                <div class="obj-card-line" aria-hidden="true"></div>
+                <p class="obj-card-desc">Plan 5–7+ crop layers using canopy, ground and root-zone spaces for diversified farm income.</p>
+              </div>
+              <div class="obj-card-footer">
+                <button type="button" class="btn-read-more" aria-expanded="false" aria-controls="objective-detail">
+                  Read More <span class="visually-hidden">about Multi-Layer Agricultural Production</span><span class="arrow-sym" aria-hidden="true">→</span>
+                </button>
+                <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-leaf" /></svg></span>
+              </div>
+              <template class="obj-detail-template">
+                <div data-slot="heading">Multi-Layer Agricultural Production</div>
+                <div class="detail-bullets-card" data-slot="bullets">
+                  <ul class="detail-custom-bullets">
+                    <li>Core production engine of SAFE Mission</li>
+                    <li>5–7+ crop layers on the same acre using vertical, canopy, ground and root-zone spaces.</li>
+                    <li>Scientific crop selection based on soil, water, climate, sunlight, duration, market &amp; export potential.</li>
+                    <li>Creates diversified, staggered income and a risk buffer against crop failure.</li>
+                    <li>Goal: More value from the same land with higher, more stable farmer income</li>
+                  </ul>
+                </div>
+              </template>
+            </article>
+
+            <!-- 02 -->
+            <article class="obj-card theme-orange" data-objective="2">
+              <div class="obj-image-wrapper">
+                <div class="obj-image-clip">
+                  <img src="assets/images/objectives/obj2.webp" alt="CFC, Packhouse, Cold Chain and Value Addition facility" class="obj-image" width="1200" height="699" loading="lazy" decoding="async" />
+                </div>
+                <div class="badge-row">
+                  <span class="num-pill">02</span>
+                  <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-factory" /></svg></span>
+                </div>
+              </div>
+              <div class="obj-content-box">
+                <h3 class="obj-card-title">CFC, Packhouse, Cold Chain &amp; Value Addition</h3>
+                <div class="obj-card-line" aria-hidden="true"></div>
+                <p class="obj-card-desc">Transform raw produce through sorting, grading, testing, storage, processing and packaging.</p>
+              </div>
+              <div class="obj-card-footer">
+                <button type="button" class="btn-read-more" aria-expanded="false" aria-controls="objective-detail">
+                  Read More <span class="visually-hidden">about CFC, Packhouse, Cold Chain &amp; Value Addition</span><span class="arrow-sym" aria-hidden="true">→</span>
+                </button>
+                <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-factory" /></svg></span>
+              </div>
+              <template class="obj-detail-template">
+                <div data-slot="heading">CFC, Packhouse, Cold Chain &amp; Value Addition</div>
+                <div class="detail-bullets-card" data-slot="bullets">
+                  <ul class="detail-custom-bullets">
+                    <li>Raw produce → Market-ready product through sorting, grading, testing, pre-cooling, cold storage, processing, packaging &amp; value addition.</li>
+                    <li>Quality assurance &amp; processing can significantly increase the value of farm produce.</li>
+                    <li>Infrastructure is owned and managed as a cooperative asset by farmers.</li>
+                    <li>Goal: Reduce post-harvest losses → add value → improve marketability → increase farmer realisation.</li>
+                  </ul>
+                </div>
+              </template>
+            </article>
+
+            <!-- 03 -->
+            <article class="obj-card theme-blue" data-objective="3">
+              <div class="obj-image-wrapper">
+                <div class="obj-image-clip">
+                  <img src="assets/images/objectives/obj3.webp" alt="Export and KYJ Interface cargo ship and airplane" class="obj-image" width="1200" height="699" loading="lazy" decoding="async" />
+                </div>
+                <div class="badge-row">
+                  <span class="num-pill">03</span>
+                  <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-globe" /></svg></span>
+                </div>
+              </div>
+              <div class="obj-content-box">
+                <h3 class="obj-card-title">Export &amp; KYJ Interface</h3>
+                <div class="obj-card-line" aria-hidden="true"></div>
+                <p class="obj-card-desc">Connect farm production to buyers through GAP, traceability, testing and export documentation.</p>
+              </div>
+              <div class="obj-card-footer">
+                <button type="button" class="btn-read-more" aria-expanded="false" aria-controls="objective-detail">
+                  Read More <span class="visually-hidden">about Export &amp; KYJ Interface</span><span class="arrow-sym" aria-hidden="true">→</span>
+                </button>
+                <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-globe" /></svg></span>
+              </div>
+              <template class="obj-detail-template">
+                <div data-slot="heading">Export &amp; KYJ Interface</div>
+                <div class="detail-bullets-card" data-slot="bullets">
+                  <ul class="detail-custom-bullets">
+                    <li>KYJ (Krushi Yeva Jayate) connects SAFE Mission production to international markets.</li>
+                    <li>Export readiness starts at the farm, not after harvest.</li>
+                    <li>Production follows buyer requirements, quality standards, GAP, testing &amp; traceability.</li>
+                    <li>Farm records, spray diaries, lot coding and testing begin from the first stage.</li>
+                    <li>Covers the complete export chain: Compliance → Documentation → Logistics → Shipment.</li>
+                    <li>Goal: Farm-compliant production → Export-ready produce → Global market access.</li>
+                  </ul>
+                </div>
+              </template>
+            </article>
+
+            <!-- 04 -->
+            <article class="obj-card theme-purple" data-objective="4">
+              <div class="obj-image-wrapper">
+                <div class="obj-image-clip">
+                  <img src="assets/images/objectives/obj4.webp" alt="Bulk Agri-Commodity Trade warehouse grain sacks" class="obj-image" width="1200" height="699" loading="lazy" decoding="async" />
+                </div>
+                <div class="badge-row">
+                  <span class="num-pill">04</span>
+                  <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-coins" /></svg></span>
+                </div>
+              </div>
+              <div class="obj-content-box">
+                <h3 class="obj-card-title">Bulk Agri-Commodity Trade</h3>
+                <div class="obj-card-line" aria-hidden="true"></div>
+                <p class="obj-card-desc">Aggregate, procure, store and trade commodities for wider institutional market access.</p>
+              </div>
+              <div class="obj-card-footer">
+                <button type="button" class="btn-read-more" aria-expanded="false" aria-controls="objective-detail">
+                  Read More <span class="visually-hidden">about Bulk Agri-Commodity Trade</span><span class="arrow-sym" aria-hidden="true">→</span>
+                </button>
+                <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-coins" /></svg></span>
+              </div>
+              <template class="obj-detail-template">
+                <div data-slot="heading">Bulk Agri-Commodity Trade</div>
+                <div class="detail-bullets-card" data-slot="bullets">
+                  <ul class="detail-custom-bullets">
+                    <li>Aggregate, procure, store and trade agricultural commodities at scale.</li>
+                    <li>Leverage platforms/systems such as eNAM, GeM, BULLKART, eNWR, NCDEX/ICEX, APMC and CFC value addition.</li>
+                    <li>Enable institutional sales and bulk market access</li>
+                    <li>Goal: Scale commodity trade → capture trading value → strengthen cooperative revenue.</li>
+                  </ul>
+                </div>
+              </template>
+            </article>
+
+            <!-- 05 -->
+            <article class="obj-card theme-teal" data-objective="5">
+              <div class="obj-image-wrapper">
+                <div class="obj-image-clip">
+                  <img src="assets/images/objectives/obj5.webp" alt="Asset Leasing and Custom Hiring Centre green tractor" class="obj-image" width="1200" height="699" loading="lazy" decoding="async" />
+                </div>
+                <div class="badge-row">
+                  <span class="num-pill">05</span>
+                  <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-gear" /></svg></span>
+                </div>
+              </div>
+              <div class="obj-content-box">
+                <h3 class="obj-card-title">Asset Leasing &amp; Custom Hiring Centre</h3>
+                <div class="obj-card-line" aria-hidden="true"></div>
+                <p class="obj-card-desc">Access cooperative-owned machinery and infrastructure without buying every asset individually.</p>
+              </div>
+              <div class="obj-card-footer">
+                <button type="button" class="btn-read-more" aria-expanded="false" aria-controls="objective-detail">
+                  Read More <span class="visually-hidden">about Asset Leasing &amp; Custom Hiring Centre</span><span class="arrow-sym" aria-hidden="true">→</span>
+                </button>
+                <span class="icon-badge-circle" aria-hidden="true"><svg><use href="#icon-obj-gear" /></svg></span>
+              </div>
+              <template class="obj-detail-template">
+                <div data-slot="heading">Asset Leasing &amp; Custom Hiring Centre</div>
+                <div class="detail-bullets-card" data-slot="bullets">
+                  <ul class="detail-custom-bullets">
+                    <li>CHC (Custom Hiring Centre): Farmers access machinery and infrastructure without individually purchasing them.</li>
+                    <li>Cooperative-owned assets are made available through a hiring/leasing model.</li>
+                    <li>Includes farm machinery, drones, cold storage, grading/processing equipment and solar assets.</li>
+                    <li>Goal: Lower investment → reduce costs → better asset utilisation.</li>
+                  </ul>
+                </div>
+              </template>
+            </article>
+          </div>
+        </div>
+
+        <!-- Expanded detail for the selected objective (filled by js/components/objectives.js) -->
+        <div class="obj-expanded-detail-wrapper" id="objective-detail" aria-live="polite" hidden>
+          <div class="obj-expanded-detail-container">
+            <div class="obj-expanded-detail-card">
+              <div class="detail-top-left-rings" aria-hidden="true">
+                <svg viewBox="0 0 160 160" fill="none">
+                  <circle cx="20" cy="20" r="70" stroke="#10b981" stroke-width="22" opacity="0.15" />
+                </svg>
+              </div>
+              <div class="detail-bottom-left-leaf" aria-hidden="true">
+                <svg viewBox="0 0 160 160" fill="none">
+                  <path d="M20 130C10 100 20 55 60 30C95 10 130 5 140 5C140 15 125 50 105 85C75 125 45 140 20 130Z" fill="#10b981" opacity="0.22" />
+                  <path d="M65 145C55 120 65 90 95 68C120 50 150 46 155 46C155 52 145 80 128 102C105 132 82 145 65 145Z" fill="#34d399" opacity="0.28" />
+                </svg>
+              </div>
+
+              <button type="button" class="obj-detail-close-btn" aria-label="Close detailed view">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+
+              <div class="obj-detail-grid">
+                <!-- 1. Stepper and heading -->
+                <div class="detail-left-col">
+                  <div class="detail-stepper" role="group" aria-label="Objective selector">
+                    <button type="button" class="stepper-step" data-objective="1" aria-pressed="false"><span class="step-num">01</span><span class="step-indicator-bar" aria-hidden="true"></span></button>
+                    <button type="button" class="stepper-step" data-objective="2" aria-pressed="false"><span class="step-num">02</span><span class="step-indicator-bar" aria-hidden="true"></span></button>
+                    <button type="button" class="stepper-step" data-objective="3" aria-pressed="false"><span class="step-num">03</span><span class="step-indicator-bar" aria-hidden="true"></span></button>
+                    <button type="button" class="stepper-step" data-objective="4" aria-pressed="false"><span class="step-num">04</span><span class="step-indicator-bar" aria-hidden="true"></span></button>
+                    <button type="button" class="stepper-step" data-objective="5" aria-pressed="false"><span class="step-num">05</span><span class="step-indicator-bar" aria-hidden="true"></span></button>
+                  </div>
+                  <div class="detail-left-content">
+                    <h3 class="detail-heading"></h3>
+                    <div class="detail-accent-bar" aria-hidden="true"></div>
+                  </div>
+                </div>
+
+                <!-- 2. Tilted photo -->
+                <div class="detail-middle-col">
+                  <div class="detail-visual">
+                    <span class="detail-bg-ring" aria-hidden="true"></span>
+                    <span class="detail-offset-card" aria-hidden="true"></span>
+                    <div class="detail-perspective-frame">
+                      <img class="detail-middle-photo" src="assets/images/objectives/obj1.webp" alt="" width="1200" height="699" decoding="async" />
+                    </div>
+                    <span class="detail-floating-leaf" aria-hidden="true">
+                      <svg viewBox="0 0 40 40" fill="none">
+                        <path d="M10 32C8 24 12 12 28 8C35 6 38 6 38 8C38 12 34 22 24 28C16 32 12 32 10 32Z" fill="#10b981" opacity="0.32" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 3. Bullet points -->
+                <div class="detail-right-col"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           WHY
+           ====================================================== -->
+      <section class="why-section" id="why" aria-labelledby="why-title">
+        <svg class="why-svg-defs" aria-hidden="true" focusable="false">
+          <defs>
+            <linearGradient id="why-swoosh-grad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#fdba74" />
+              <stop offset="0.5" stop-color="#f97316" />
+              <stop offset="1" stop-color="#ea580c" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Farm photo with orange swoosh (top-right on desktop, on top on phones) -->
+        <div class="why-media">
+          <svg class="why-media-swoosh" viewBox="0 0 634 330" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 0H90L160 230C120 160 50 70 0 0Z" fill="url(#why-swoosh-grad)" />
+          </svg>
+          <div class="why-media-photo">
+            <img src="assets/images/why/whysafemission.webp" alt="S.A.F.E. Mission lush green agricultural crop field at sunrise" class="why-farm-image" width="1086" height="724" loading="lazy" decoding="async" />
+          </div>
+        </div>
+
+        <div class="why-container">
+          <div class="why-hero-row">
+            <div class="why-text-col">
+              <div class="why-accent-bar" aria-hidden="true"></div>
+              <h2 class="why-main-title" id="why-title">
+                <span class="why-title-dark">Why</span>
+                <span class="why-title-highlight">S.A.F.E. Mission</span>
+                <span class="why-title-dark">Is Needed</span>
+              </h2>
+              <div class="why-desc-row">
+                <p class="why-description">
+                  Traditional agriculture often depends on one crop, one season and one market. S.A.F.E. Mission brings production, quality, shared
+                  infrastructure, value addition and market linkage together in one coordinated system.
+                </p>
+                <div class="why-dots-grid" aria-hidden="true">
+                  <span class="why-dot"></span><span class="why-dot"></span><span class="why-dot"></span>
+                  <span class="why-dot"></span><span class="why-dot"></span><span class="why-dot"></span>
+                  <span class="why-dot"></span><span class="why-dot"></span><span class="why-dot"></span>
+                  <span class="why-dot"></span><span class="why-dot"></span><span class="why-dot"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="why-cards-row">
+            <!-- Traditional farming -->
+            <article class="why-card why-card-traditional">
+              <div class="why-card-header">
+                <div class="why-icon-bubble bubble-peach" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" class="why-card-icon-svg" fill="none" stroke="#c2410c" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M10 38C12 34 18 33 24 33C30 33 36 34 38 38C39 41 33 42 24 42C15 42 9 41 10 38Z" stroke-width="2.4" />
+                    <path d="M15 39.5C19 38.5 29 38.5 33 39.5" stroke-width="1.8" />
+                    <path d="M24 33V17" stroke-width="2.4" />
+                    <path d="M24 25C19 21 13 21 12 26C12 30 18 31 24 27" stroke-width="2.4" />
+                    <path d="M15 24C18 24 21 25 24 26" stroke-width="1.6" />
+                    <path d="M24 20C29 16 35 17 36 22C36 26 30 27 24 23" stroke-width="2.4" />
+                    <path d="M25 22C28 21 32 20 34 20" stroke-width="1.6" />
+                  </svg>
+                </div>
+                <div class="why-title-group">
+                  <h3 class="why-card-heading">Traditional<br />Farming</h3>
+                  <div class="why-card-line line-orange" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="why-card-inner">
+                <ul class="why-points-list">
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-cross" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-cross" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></span>
+                    <span class="why-point-text">Single crop, single season and single market dependence.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-cross" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-cross" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></span>
+                    <span class="why-point-text">Limited post-harvest infrastructure, storage and cold-chain access.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-cross" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-cross" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></span>
+                    <span class="why-point-text">Gaps in quality testing and export-standard awareness.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-cross" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-cross" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></span>
+                    <span class="why-point-text">Limited international buyer links and lower bargaining power.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-cross" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-cross" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></span>
+                    <span class="why-point-text">Raw commodity sales with little value addition.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-cross" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-cross" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg></span>
+                    <span class="why-point-text">Individual burden of purchasing farm machinery.</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <!-- S.A.F.E. Mission farming -->
+            <article class="why-card why-card-safe">
+              <div class="why-card-header">
+                <div class="why-icon-bubble bubble-mint" aria-hidden="true">
+                  <svg viewBox="0 0 48 48" class="why-card-icon-svg" fill="none">
+                    <path d="M24 40V16" stroke="#047857" stroke-width="2.8" stroke-linecap="round" />
+                    <path d="M24 28C16 28 10 21 12 13C21 11 24 19 24 28Z" fill="#047857" />
+                    <path d="M24 22C32 22 38 15 36 7C27 5 24 13 24 22Z" fill="#059669" />
+                    <path d="M24 16C23 11 25.5 8 28 7" stroke="#047857" stroke-width="2.5" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="why-title-group">
+                  <h3 class="why-card-heading">S.A.F.E. Mission<br />Farming</h3>
+                  <div class="why-card-line line-green" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="why-card-inner">
+                <ul class="why-points-list">
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-check" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <span class="why-point-text">Cooperative farming with diverse, district-suitable crop combinations.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-check" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <span class="why-point-text">Shared packhouse, grading, testing, storage and processing facilities.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-check" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <span class="why-point-text">GAP, traceability and applicable quality compliance.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-check" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <span class="why-point-text">Domestic, institutional and export buyer linkages.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-check" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <span class="why-point-text">Value addition, branding and standardised packaging.</span>
+                  </li>
+                  <li class="why-point-item">
+                    <span class="why-badge-pill badge-check" aria-hidden="true"><svg viewBox="0 0 24 24" class="why-symbol-svg stroke-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg></span>
+                    <span class="why-point-text">Shared equipment through asset leasing and Custom Hiring Centres.</span>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           HOW (arrows are drawn by js/components/how-journey.js)
+           ====================================================== -->
+      <section class="how-section" id="how" aria-labelledby="how-title">
+        <div class="how-container">
+          <div class="how-title-column">
+            <h2 class="how-main-heading" id="how-title">How <span class="how-heading-safe">S.A.F.E. Mission</span> Works</h2>
+            <div class="how-subtitle-wrap">
+              <span class="how-sub-line how-line-left" aria-hidden="true"></span>
+              <p class="how-subtitle">Step-by-step implementation journey</p>
+              <span class="how-sub-line how-line-right" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="how-board">
+            <svg class="how-arrows" aria-hidden="true" focusable="false"></svg>
+
+            <!-- Row 1 -->
+            <div class="how-row">
+              <div class="how-step" data-step="01">
+                <article class="how-card">
+                  <img src="assets/images/how/p1.jpg" alt="District-Level Export Promotional Meeting" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>01</span>
+                      <h3 class="how-card-title">District-Level Export Promotional Meeting</h3>
+                    </div>
+                    <p class="how-card-desc">FEED MSCS conducts an Export Promotional Meeting (EPM) in every district.</p>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+
+              <div class="how-step" data-step="02">
+                <article class="how-card">
+                  <img src="assets/images/how/p2.jpg" alt="Establish District SAFE Mission Society (DSMS)" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>02</span>
+                      <h3 class="how-card-title">Establish District SAFE Mission Society (DSMS)</h3>
+                    </div>
+                    <p class="how-card-desc">
+                      Interested and eligible stakeholders (participated in EPM) come together to establish a District SAFE Mission Society (DSMS).
+                    </p>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div class="how-row">
+              <div class="how-step" data-step="03">
+                <article class="how-card">
+                  <img src="assets/images/how/p3.jpg" alt="Mobilise Land &amp; Government Support" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>03</span>
+                      <h3 class="how-card-title">Mobilise Land &amp; Government Support</h3>
+                    </div>
+                    <p class="how-card-desc">
+                      Approx. 20 acres of land is mobilised with appropriate government support and developed as a District Model SAFE Agricultural Export Zone.
+                    </p>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+
+              <div class="how-step" data-step="04">
+                <article class="how-card">
+                  <img src="assets/images/how/p4.jpg" alt="Scientific &amp; Export-Oriented Crop Planning" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>04</span>
+                      <h3 class="how-card-title">Scientific &amp; Export-Oriented Crop Planning</h3>
+                    </div>
+                    <p class="how-card-desc">
+                      Based on the district's agro-climatic conditions, soil, water availability, market demand, and export opportunities, the zone is planned for:
+                    </p>
+                    <div class="how-card-more" id="how-more-04">
+                      <div class="how-card-more-inner">
+                        <ul class="how-card-points">
+                          <li>Multi-layer farming</li>
+                          <li>High-value crops</li>
+                          <li>Sustainable crops</li>
+                          <li>Export-oriented crop combinations</li>
+                          <li>Applicable EU/international quality requirements</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false" aria-controls="how-more-04">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+
+              <div class="how-step" data-step="05">
+                <article class="how-card">
+                  <img src="assets/images/how/p5.jpg" alt="Cooperative Farming &amp; Production" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>05</span>
+                      <h3 class="how-card-title">Cooperative Farming &amp; Production</h3>
+                    </div>
+                    <p class="how-card-desc">Farmers participate through cooperative farming, enabling:</p>
+                    <div class="how-card-more" id="how-more-05">
+                      <div class="how-card-more-inner">
+                        <ul class="how-card-points">
+                          <li>Collective production</li>
+                          <li>Standardised cultivation practices</li>
+                          <li>Efficient resource utilisation</li>
+                          <li>Better scale</li>
+                          <li>Traceability and production discipline</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false" aria-controls="how-more-05">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="how-row">
+              <div class="how-step" data-step="06">
+                <article class="how-card">
+                  <img src="assets/images/how/p6.jpg" alt="Quality Control &amp; Export Compliance" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>06</span>
+                      <h3 class="how-card-title">Quality Control &amp; Export Compliance</h3>
+                    </div>
+                    <p class="how-card-desc">
+                      Production follows applicable quality, food-safety, residue, traceability, and export requirements, supported by:
+                    </p>
+                    <div class="how-card-more" id="how-more-06">
+                      <div class="how-card-more-inner">
+                        <ul class="how-card-points">
+                          <li>Scientific crop practices</li>
+                          <li>Quality monitoring</li>
+                          <li>Testing</li>
+                          <li>GAP and applicable international standards</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false" aria-controls="how-more-06">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+
+              <div class="how-step" data-step="07">
+                <article class="how-card">
+                  <img src="assets/images/how/p9.jpg" alt="Build the Common Infrastructure" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>07</span>
+                      <h3 class="how-card-title">Build the Common Infrastructure</h3>
+                    </div>
+                    <p class="how-card-desc">
+                      An integrated export infrastructure ecosystem created through convergence of Central and State Government schemes, covering:
+                    </p>
+                    <div class="how-card-more" id="how-more-07">
+                      <div class="how-card-more-inner">
+                        <p class="how-card-chain">
+                          <span class="how-chain-item">Packhouse</span> <span class="how-chain-arrow" aria-hidden="true">→</span>
+                          <span class="how-chain-item">CFC</span> <span class="how-chain-arrow" aria-hidden="true">→</span>
+                          <span class="how-chain-item">Cold Chain</span> <span class="how-chain-arrow" aria-hidden="true">→</span>
+                          <span class="how-chain-item">Testing</span> <span class="how-chain-arrow" aria-hidden="true">→</span>
+                          <span class="how-chain-item">Grading</span> <span class="how-chain-arrow" aria-hidden="true">→</span>
+                          <span class="how-chain-item">Processing</span> <span class="how-chain-arrow" aria-hidden="true">→</span>
+                          <span class="how-chain-item">Value Addition</span> <span class="how-chain-arrow" aria-hidden="true">→</span>
+                          <span class="how-chain-item">Packaging</span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false" aria-controls="how-more-07">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+
+              <div class="how-step" data-step="08">
+                <article class="how-card">
+                  <img src="assets/images/how/p7.jpg" alt="Value Addition &amp; Branding" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>08</span>
+                      <h3 class="how-card-title">Value Addition &amp; Branding</h3>
+                    </div>
+                    <p class="how-card-desc">Raw agricultural produce is transformed into high-value market-ready products through:</p>
+                    <div class="how-card-more" id="how-more-08">
+                      <div class="how-card-more-inner">
+                        <ul class="how-card-points">
+                          <li>Processing</li>
+                          <li>Value addition</li>
+                          <li>Product development</li>
+                          <li>Branding</li>
+                          <li>Standardised packaging</li>
+                          <li>Domestic and export-ready presentation</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false" aria-controls="how-more-08">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="how-row">
+              <div class="how-step" data-step="09">
+                <article class="how-card">
+                  <img src="assets/images/how/p8.jpg" alt="Commodity Trade &amp; Market Linkages" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>09</span>
+                      <h3 class="how-card-title">Commodity Trade &amp; Market Linkages</h3>
+                    </div>
+                    <p class="how-card-desc">The ecosystem connects production with:</p>
+                    <div class="how-card-more" id="how-more-09">
+                      <div class="how-card-more-inner">
+                        <ul class="how-card-points">
+                          <li>Domestic buyers</li>
+                          <li>Institutional buyers</li>
+                          <li>Traders</li>
+                          <li>International buyers</li>
+                          <li>Commodity markets</li>
+                          <li>Export markets</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false" aria-controls="how-more-09">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+
+              <div class="how-step" data-step="10">
+                <article class="how-card">
+                  <img src="assets/images/how/p10.jpg" alt="Farm-to-Global Export" class="how-card-img" width="760" height="430" loading="lazy" decoding="async" />
+                  <div class="how-card-info">
+                    <div class="how-card-head">
+                      <span class="how-badge"><span class="visually-hidden">Step </span>10</span>
+                      <h3 class="how-card-title">Farm-to-Global Export</h3>
+                    </div>
+                    <p class="how-card-desc">Qualified produce and value-added products are channelled into:</p>
+                    <div class="how-card-more" id="how-more-10">
+                      <div class="how-card-more-inner">
+                        <ul class="how-card-points">
+                          <li>Domestic market through My Market Service</li>
+                          <li>International markets through Krushi Yeva Jayate (KYJ) service</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <button type="button" class="how-card-toggle" aria-expanded="false" aria-controls="how-more-10">
+                    <span class="how-toggle-label">Read more</span>
+                    <svg class="how-toggle-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           INTEGRATED DISTRICT MODEL
+           ====================================================== -->
+      <section class="district-model-section" id="district-model" aria-labelledby="district-title">
+        <div class="district-model-container">
+          <div class="district-model-content">
+            <h2 class="district-model-title" id="district-title">
+              <span class="district-title-line district-title-dark">Integrated</span>
+              <span class="district-title-line district-title-dark">District Model</span>
+              <span class="district-title-line district-title-gold">(20&#8209;Acre AEZ)</span>
+            </h2>
+            <div class="district-accent-bar" aria-hidden="true"></div>
+            <div class="district-model-text">
+              <p class="district-model-paragraph">
+                Within a single DSMS, the operational model of SAFE Mission has been designed as a
+                <strong class="district-text-highlight">20&#8209;acre integrated AEZ architecture</strong>. This is primarily composed of four
+                operational zones.
+              </p>
+              <p class="district-model-paragraph">
+                Together, these four zones combine
+                <strong class="district-text-highlight">production + post-harvest + processing + trade + leasing + animal husbandry + export ecosystem</strong>
+                into a single district-level cooperative asset structure.
+              </p>
+            </div>
+          </div>
+
+          <div class="district-model-visual">
+            <div class="district-model-visual-frame">
+              <img
+                src="assets/images/district/safemissionpiechart.webp"
+                alt="Integrated District Model (20-Acre AEZ) Pie Chart Diagram: Zone 1 Multi-layer Farming 14 acres (70%), Zone 2 Packhouse &amp; CFC 1 acre (5%), Zone 3 High-value Horticulture 3 acres (15%), Zone 4 Animal Husbandry 2 acres (10%)"
+                class="district-model-pie-image"
+                width="1300"
+                height="867"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           JOIN
+           ====================================================== -->
+      <section class="join-section" id="join" aria-labelledby="join-title">
+        <span class="join-blob join-blob-top" aria-hidden="true"></span>
+        <span class="join-blob join-blob-left" aria-hidden="true"></span>
+        <span class="join-blob join-blob-bottom" aria-hidden="true"></span>
+
+        <div class="join-container">
+          <div class="join-media">
+            <img
+              src="assets/images/join/join-safe-mission.jpg"
+              alt="S.A.F.E. Mission agricultural export zone with packhouses, solar power and drone monitoring"
+              class="join-media-img"
+              width="1400"
+              height="920"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="join-card">
+            <span class="join-card-blob" aria-hidden="true"></span>
+
+            <h2 class="join-title" id="join-title">Join Safe Mission</h2>
+            <p class="join-subtitle">Share your details and area of interest to express interest in the mission.</p>
+
+            <form class="join-form" id="join-form" novalidate>
+              <div class="join-grid">
+                <!-- Full name -->
+                <div class="join-field">
+                  <label class="join-label" for="join-name">Full Name <span aria-hidden="true">*</span></label>
+                  <div class="join-control">
+                    <svg class="join-control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                      <circle cx="12" cy="7" r="4" />
+                    </svg>
+                    <input id="join-name" name="name" type="text" class="join-input" placeholder="Enter your name" autocomplete="name" required aria-invalid="false" />
+                  </div>
+                  <div class="join-help"><p class="join-error" id="join-name-error"></p></div>
+                </div>
+
+                <!-- Mobile number: country code picker | number -->
+                <div class="join-field">
+                  <label class="join-label" for="join-mobile">Mobile Number <span aria-hidden="true">*</span></label>
+                  <div class="join-control">
+                    <svg class="join-control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                    </svg>
+                    <div class="join-input join-phone">
+                      <div class="join-code">
+                        <span class="join-code-value" aria-hidden="true">+91</span>
+                        <svg class="join-code-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                        <select class="join-code-select" id="join-country" name="country" aria-label="Country code">
+                          <option value="IN">India (+91)</option>
+                        </select>
+                      </div>
+                      <input
+                        id="join-mobile"
+                        name="mobile"
+                        type="tel"
+                        inputmode="numeric"
+                        class="join-phone-input"
+                        placeholder="Enter mobile number"
+                        autocomplete="tel-national"
+                        maxlength="17"
+                        required
+                        aria-invalid="false"
+                      />
+                    </div>
+                  </div>
+                  <div class="join-help"><p class="join-error" id="join-mobile-error"></p></div>
+                </div>
+
+                <!-- Participant type -->
+                <div class="join-field">
+                  <label class="join-label" for="join-type">Participant Type <span aria-hidden="true">*</span></label>
+                  <div class="join-control">
+                    <svg class="join-control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <path d="M16 3.128a4 4 0 0 1 0 7.744" />
+                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                      <circle cx="9" cy="7" r="4" />
+                    </svg>
+                    <select id="join-type" name="type" class="join-input join-select" required aria-invalid="false">
+                      <option value="" disabled selected>Select type</option>
+                      <option value="Farmer">Farmer</option>
+                      <option value="FPO / Cooperative">FPO / Cooperative</option>
+                      <option value="SHG">SHG</option>
+                      <option value="MSME / Entrepreneur">MSME / Entrepreneur</option>
+                      <option value="Trader / Exporter">Trader / Exporter</option>
+                      <option value="Service Partner">Service Partner</option>
+                      <option value="Other">Other</option>
+                    </select>
+                    <svg class="join-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                  </div>
+                  <div class="join-help"><p class="join-error" id="join-type-error"></p></div>
+                </div>
+
+                <!-- District (options come from js/data/ap-districts.js) -->
+                <div class="join-field">
+                  <label class="join-label" for="join-district">District <span aria-hidden="true">*</span></label>
+                  <div class="join-control">
+                    <svg class="join-control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    <select id="join-district" name="district" class="join-input join-select" required aria-invalid="false">
+                      <option value="" disabled selected>Select district</option>
+                    </select>
+                    <svg class="join-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6" /></svg>
+                  </div>
+                  <div class="join-help"><p class="join-error" id="join-district-error"></p></div>
+                </div>
+
+                <!-- Message -->
+                <div class="join-field join-field-wide">
+                  <label class="join-label" for="join-message">Message <span aria-hidden="true">*</span></label>
+                  <div class="join-control">
+                    <svg class="join-control-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+                      <path d="M7 11h10" />
+                      <path d="M7 15h6" />
+                      <path d="M7 7h8" />
+                    </svg>
+                    <textarea
+                      id="join-message"
+                      name="message"
+                      class="join-input join-textarea"
+                      placeholder="Enter your message"
+                      rows="3"
+                      minlength="50"
+                      maxlength="500"
+                      required
+                      aria-invalid="false"
+                      aria-describedby="join-message-hint"
+                    ></textarea>
+                  </div>
+                  <div class="join-help">
+                    <p class="join-error" id="join-message-error"></p>
+                    <p class="join-hint" id="join-message-hint">Minimum 50 characters</p>
+                    <span class="join-counter" aria-hidden="true">0/500</span>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="join-submit">
+                Submit
+                <svg class="join-submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </button>
+
+              <p class="join-success" role="status" aria-live="polite">
+                <svg class="join-success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21.801 10A10 10 0 1 1 17 3.335" />
+                  <path d="m9 11 3 3L22 4" />
+                </svg>
+                <span class="join-success-text"></span>
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================
+           TESTIMONIALS
+           ====================================================== -->
+      <section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-title">
+        <div class="testimonials-container">
+          <div class="testimonials-board">
+            <h2 class="testimonials-main-heading" id="testimonials-title">Testimonials</h2>
+
+            <div class="testimonials-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials">
+              <button type="button" class="testimonials-nav-arrow testimonials-arrow-left" aria-label="Previous testimonials">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+
+              <div class="testimonials-slider-viewport">
+                <div class="testimonials-slider-track">
+                  <article class="testimonial-card">
+                    <div class="card-top-bar">
+                      <svg class="card-quote-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                      </svg>
+                      <div class="card-avatar-badge" aria-hidden="true">SE</div>
+                    </div>
+                    <h3 class="card-title-text">Software Engineer</h3>
+                    <span class="card-subtitle-text">Remote farm monitoring</span>
+                    <p class="card-quote-body">
+                      “FEED’s SAFE Mission technology enables me to monitor farm activities and track crop progress while continuing my full-time software
+                      engineering job. I can stay connected to agriculture without having to quit my career.”
+                    </p>
+                    <div class="card-tag-container"><span class="card-focus-pill">S.A.F.E. Mission focus</span></div>
+                  </article>
+
+                  <article class="testimonial-card">
+                    <div class="card-top-bar">
+                      <svg class="card-quote-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                      </svg>
+                      <div class="card-avatar-badge" aria-hidden="true">FM</div>
+                    </div>
+                    <h3 class="card-title-text">Farmer</h3>
+                    <span class="card-subtitle-text">Multi-layer farming</span>
+                    <p class="card-quote-body">
+                      “SAFE Mission’s multi-layer farming approach helps me diversify crops and plan harvests across different seasons. It creates
+                      opportunities for more regular income and reduces dependence on a single crop.”
+                    </p>
+                    <div class="card-tag-container"><span class="card-focus-pill">S.A.F.E. Mission focus</span></div>
+                  </article>
+
+                  <article class="testimonial-card">
+                    <div class="card-top-bar">
+                      <svg class="card-quote-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                      </svg>
+                      <div class="card-avatar-badge" aria-hidden="true">DS</div>
+                    </div>
+                    <h3 class="card-title-text">District SAFE Mission Society (DSMS)</h3>
+                    <span class="card-subtitle-text">Cooperative export ecosystem</span>
+                    <p class="card-quote-body">
+                      “With FEED’s export consultancy, our 20-acre SAFE Mission model aims to connect district-grown agricultural produce, in raw and
+                      value-added forms, with EU markets while building a sustainable cooperative export ecosystem.”
+                    </p>
+                    <div class="card-tag-container"><span class="card-focus-pill">S.A.F.E. Mission focus</span></div>
+                  </article>
+
+                  <article class="testimonial-card">
+                    <div class="card-top-bar">
+                      <svg class="card-quote-icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
+                      </svg>
+                      <div class="card-avatar-badge" aria-hidden="true">SH</div>
+                    </div>
+                    <h3 class="card-title-text">Self-Help Group (SHG)</h3>
+                    <span class="card-subtitle-text">Common Facility Centre</span>
+                    <p class="card-quote-body">
+                      “SAFE Mission’s Common Facility Centre gives our SHG access to shared infrastructure for producing ginger-garlic paste. We aim to build
+                      our own brand and reach customers through e-commerce and quick-commerce platforms.”
+                    </p>
+                    <div class="card-tag-container"><span class="card-focus-pill">S.A.F.E. Mission focus</span></div>
+                  </article>
+                </div>
+              </div>
+
+              <button type="button" class="testimonials-nav-arrow testimonials-arrow-right" aria-label="Next testimonials">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+
+              <div class="testimonials-dots"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

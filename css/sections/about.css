@@ -1,0 +1,481 @@
+/* ========================================================
+   about.css - "About SAFE Mission"
+   Banner layout: text + Vision/Mission cards on the left,
+   hexagon photo cluster on a colour backdrop on the right.
+
+   The section fills the screen (full width, full height).
+   --stage-w is the photo stage on the right: as tall as the
+   screen where possible, never more than 47% of the width.
+   --s is one design pixel of the 1024px-wide reference
+   banner, sized so the text column fits beside the stage.
+   The right stage uses its own unit --u (1/424 of its width).
+   ======================================================== */
+
+.about-section {
+  --stage-w: min(calc(100vh * 0.995), 47vw);
+  --pad-l: clamp(24px, 5vw, 96px);
+  --s: clamp(0.82px, calc((100vw - var(--stage-w) - var(--pad-l)) / 590), 1.45px);
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffffff 0%, #f7faf8 100%);
+  font-family: var(--font-sans);
+}
+
+/* Subtle top divider to transition cleanly from hero */
+.about-top-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 5;
+  background: linear-gradient(90deg, transparent 0%, rgba(22, 163, 74, 0.4) 50%, transparent 100%);
+}
+
+.about-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.about-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--stage-w);
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ========================================================
+   LEFT COLUMN: CONTENT & TYPOGRAPHY
+   ======================================================== */
+.about-content-col {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  padding: calc(36 * var(--s)) calc(8 * var(--s)) calc(30 * var(--s)) var(--pad-l);
+}
+
+/* Orange + green accent dashes */
+.about-accent-badge {
+  display: flex;
+  align-items: center;
+  gap: calc(6 * var(--s));
+  margin-bottom: calc(15 * var(--s));
+}
+
+.accent-pill-orange,
+.accent-pill-green {
+  display: inline-block;
+  width: calc(30 * var(--s));
+  height: calc(3.2 * var(--s));
+  border-radius: 9999px;
+}
+
+.accent-pill-orange {
+  background: #f07b1f;
+}
+
+.accent-pill-green {
+  background: #1b5e20;
+}
+
+.about-title {
+  font-size: calc(38 * var(--s));
+  font-weight: 800;
+  color: #1f2937;
+  line-height: 1.15;
+  margin: 0 0 calc(10 * var(--s));
+  letter-spacing: -0.02em;
+}
+
+.title-green {
+  color: #1e6b2f;
+}
+
+.about-subtitle {
+  font-size: calc(19.5 * var(--s));
+  font-weight: 700;
+  color: #1d6a30;
+  line-height: 1.3;
+  margin: 0 0 calc(16 * var(--s));
+}
+
+.subtitle-brand {
+  letter-spacing: 0.06em;
+}
+
+.about-desc {
+  font-size: max(14px, calc(13.2 * var(--s)));
+  line-height: 1.66;
+  color: #3d4651;
+  max-width: calc(582 * var(--s));
+  margin: 0 0 calc(26 * var(--s));
+}
+
+.desc-highlight {
+  color: #1b6a2e;
+  font-weight: 700;
+}
+
+/* ========================================================
+   VISION & MISSION CARDS
+   ======================================================== */
+.about-cards-row {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+.about-cards-decor {
+  position: absolute;
+  left: calc(-50 * var(--s));
+  top: calc(-28 * var(--s));
+  width: calc(140 * var(--s));
+  height: calc(200 * var(--s));
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-value-card {
+  position: relative;
+  flex: 0 1 calc(290 * var(--s));
+  min-width: 0;
+  min-height: calc(137 * var(--s));
+  display: flex;
+  z-index: 1;
+  transition: transform 0.28s ease;
+}
+
+.about-value-card + .about-value-card {
+  margin-left: calc(-12 * var(--s));
+}
+
+@media (hover: hover) {
+  .about-value-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.about-value-card.vision {
+  --accent-text: #1b5e20;
+  --accent-line: #2e8b3a;
+  --panel-border: #cfe6cb;
+  --mini-hex: #d5ebd1;
+  --icon-shadow: rgba(30, 120, 50, 0.35);
+}
+
+.about-value-card.mission {
+  --accent-text: #e8620e;
+  --accent-line: #f07b1f;
+  --panel-border: #f8d6b2;
+  --mini-hex: #fde0c0;
+  --icon-shadow: rgba(234, 100, 20, 0.35);
+}
+
+/* Elongated hexagon panel (non-scaling round-joined strokes give soft corners) */
+.about-card-panel {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: calc(28 * var(--s) + 6px);
+  right: 6px;
+  width: calc(100% - 28 * var(--s) - 12px);
+  height: calc(100% - 12px);
+  overflow: visible;
+}
+
+.panel-border {
+  fill: var(--panel-border);
+  stroke: var(--panel-border);
+  stroke-width: 12;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.panel-fill {
+  stroke-width: 9;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.vision .panel-fill-a { stop-color: #e5f2e2; }
+.vision .panel-fill-b { stop-color: #f4faf2; }
+.mission .panel-fill-a { stop-color: #ffeedd; }
+.mission .panel-fill-b { stop-color: #fff8f0; }
+
+/* Hexagon icon badge */
+.about-card-icon {
+  position: absolute;
+  left: 0;
+  top: calc(10 * var(--s));
+  width: calc(60 * var(--s));
+  height: calc(66 * var(--s));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  filter: drop-shadow(0 calc(5 * var(--s)) calc(9 * var(--s)) var(--icon-shadow));
+}
+
+.about-icon-hex {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vision .icon-hex-a { stop-color: #5dbb4a; }
+.vision .icon-hex-b { stop-color: #1d7c36; }
+.mission .icon-hex-a { stop-color: #fb9d35; }
+.mission .icon-hex-b { stop-color: #e9590c; }
+
+.about-card-glyph {
+  position: relative;
+  width: calc(29 * var(--s));
+  height: calc(29 * var(--s));
+  color: #ffffff;
+}
+
+.about-card-mini-hex {
+  position: absolute;
+  left: calc(45 * var(--s));
+  top: calc(93 * var(--s));
+  width: calc(23 * var(--s));
+  height: calc(26 * var(--s));
+  fill: var(--mini-hex);
+  z-index: 1;
+}
+
+.about-card-body {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding: calc(15 * var(--s)) calc(22 * var(--s)) calc(18 * var(--s)) calc(78 * var(--s));
+}
+
+.about-card-heading {
+  font-size: max(15px, calc(17 * var(--s)));
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+  color: var(--accent-text);
+  margin: 0 0 calc(6 * var(--s));
+}
+
+.about-card-line {
+  display: block;
+  width: calc(32 * var(--s));
+  height: calc(3 * var(--s));
+  border-radius: 2px;
+  background: var(--accent-line);
+  margin-bottom: calc(9 * var(--s));
+}
+
+.about-card-copy {
+  font-size: max(12px, calc(11 * var(--s)));
+  line-height: 1.52;
+  color: #4a5361;
+  margin: 0;
+}
+
+/* ========================================================
+   RIGHT COLUMN: PHOTO STAGE & BACKDROP
+   ======================================================== */
+.about-visual-col {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+.about-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 424 / 426;
+  container-type: inline-size;
+  --u: calc(100cqw / 424);
+  z-index: 1;
+}
+
+.visual-backdrop-svg,
+.visual-front-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.visual-backdrop-svg {
+  z-index: 0;
+}
+
+.visual-front-svg {
+  z-index: 4;
+}
+
+/* Photo frame: --l/--t/--w/--h in stage units, --p = white border width */
+.cluster-frame {
+  position: absolute;
+  left: calc(var(--l) * var(--u));
+  top: calc(var(--t) * var(--u));
+  width: calc(var(--w) * var(--u));
+  height: calc(var(--h) * var(--u));
+  filter: drop-shadow(0 calc(8 * var(--u)) calc(14 * var(--u)) rgba(0, 0, 0, 0.2));
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.frame-hex-big {
+  --l: 96;
+  --t: 22;
+  --w: 284;
+  --h: 328;
+  --p: 6.5;
+}
+
+.frame-hex-top {
+  --l: 3;
+  --t: 33;
+  --w: 129;
+  --h: 149;
+  --p: 5;
+  z-index: 3;
+}
+
+.frame-hex-bottom {
+  --l: 10;
+  --t: 197;
+  --w: 129;
+  --h: 149;
+  --p: 5;
+  z-index: 3;
+}
+
+.hex-border-pad {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  clip-path: url(#aboutHexClip);
+  /* vertical padding x1.1547 keeps the inner hexagon regular, so the border is even */
+  padding: calc(var(--p) * 1.1547 * var(--u)) calc(var(--p) * var(--u));
+}
+
+.hex-media-container {
+  width: 100%;
+  height: 100%;
+  clip-path: url(#aboutHexClip);
+  overflow: hidden;
+  background: #065f46;
+}
+
+.cluster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+@media (hover: hover) {
+  .cluster-frame:hover {
+    transform: scale(1.03);
+  }
+
+  .cluster-frame:hover .cluster-img {
+    transform: scale(1.06);
+  }
+}
+
+.main-crop-img {
+  object-position: 45% center;
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE)
+   ======================================================== */
+@media (max-width: 1023.98px) {
+  .about-section {
+    --s: 1px;
+    padding-top: 56px;
+    min-height: 0;
+  }
+
+  .about-container {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .about-content-col {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .about-title {
+    font-size: clamp(28px, 5.5vw, 40px);
+  }
+
+  .about-subtitle {
+    font-size: clamp(16px, 2.6vw, 21px);
+  }
+
+  .about-desc {
+    font-size: 15px;
+  }
+
+  .about-value-card {
+    flex: 1 1 0;
+  }
+
+  .about-visual-col {
+    margin-top: 40px;
+    overflow: hidden;
+  }
+
+  .about-stage {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+}
+
+/* Phones: Vision and Mission stack */
+@media (max-width: 639.98px) {
+  .about-content-col {
+    padding: 0 18px;
+  }
+
+  .about-cards-row {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .about-value-card {
+    flex: none;
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .about-value-card + .about-value-card {
+    margin-left: 0;
+  }
+
+  .about-desc {
+    font-size: 14.5px;
+  }
+
+  .about-visual-col {
+    margin-top: 28px;
+  }
+}

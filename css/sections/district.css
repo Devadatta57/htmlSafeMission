@@ -1,0 +1,207 @@
+/* ========================================================
+   district.css - Integrated District Model (20-Acre AEZ)
+   Text on the left, pie chart on the right.
+   ======================================================== */
+
+.district-model-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fdfae1;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  padding: 60px 32px;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.district-model-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 52px;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+/* ========================================================
+   LEFT COLUMN: TITLE, ACCENT BAR & TEXT
+   ======================================================== */
+.district-model-content {
+  flex: 1 1 440px;
+  max-width: 490px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.district-model-title {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: -0.03em;
+  line-height: 1.03;
+}
+
+.district-title-line {
+  display: block;
+  font-size: clamp(34px, 4vw, 54px);
+  font-weight: 900;
+}
+
+.district-title-dark {
+  color: #0b1426;
+}
+
+.district-title-gold {
+  color: #c88b1f;
+  margin-top: 4px;
+}
+
+/* Orange-to-green accent divider */
+.district-accent-bar {
+  width: 74px;
+  height: 5.5px;
+  background: linear-gradient(90deg, #fd8804 0%, #fc9a08 30%, #cb9c17 48%, #388e2e 72%, #067430 100%);
+  border-radius: 9999px;
+  margin: 20px 0 24px 0;
+}
+
+.district-model-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 440px;
+}
+
+.district-model-paragraph {
+  margin: 0;
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.5;
+  color: #171d2b;
+  font-weight: 500;
+  letter-spacing: -0.012em;
+}
+
+.district-text-highlight {
+  color: #067430;
+  font-weight: 800;
+}
+
+/* ========================================================
+   RIGHT COLUMN: PIE CHART
+   ======================================================== */
+.district-model-visual {
+  flex: 1.25 1 580px;
+  max-width: 660px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.district-model-visual-frame {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.district-model-pie-image {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform 0.3s var(--ease-spring);
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.05));
+}
+
+@media (hover: hover) {
+  .district-model-pie-image:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* ========================================================
+   RESPONSIVE
+   ======================================================== */
+@media (max-width: 1080px) {
+  .district-model-section {
+    padding: 80px 24px 88px;
+  }
+
+  .district-model-container {
+    gap: 36px;
+  }
+
+  .district-title-line {
+    font-size: clamp(32px, 3.6vw, 44px);
+  }
+}
+
+@media (max-width: 880px) {
+  .district-model-section {
+    padding: 72px 20px 80px;
+    min-height: 0;
+  }
+
+  .district-model-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 36px;
+  }
+
+  .district-model-content {
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .district-model-text {
+    max-width: 100%;
+  }
+
+  .district-model-visual {
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    flex: 1 1 auto;
+  }
+
+  .district-title-line {
+    font-size: clamp(30px, 5.2vw, 40px);
+  }
+}
+
+@media (max-width: 540px) {
+  .district-model-section {
+    padding: 64px 16px 72px;
+  }
+
+  .district-model-container {
+    gap: 26px;
+  }
+
+  .district-accent-bar {
+    margin: 16px 0 18px 0;
+  }
+
+  .district-model-paragraph {
+    font-size: 14.8px;
+    line-height: 1.48;
+  }
+
+  .district-title-line {
+    font-size: clamp(26px, 7vw, 34px);
+  }
+}
